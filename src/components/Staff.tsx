@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Crown, Shield, ShieldCheck, Pen, Video } from "lucide-react";
+import { Crown, ShieldCheck, Gavel, Video } from "lucide-react";
 
 interface Miembro {
   nombre: string;
@@ -58,11 +58,11 @@ const STAFF: Miembro[] = [
   },
   {
     nombre: "Martín Lusa",
-    rol: "Mod",
-    roleIcon: <Pen className="h-4 w-4" />,
+    rol: "Mod · Mano firme",
+    roleIcon: <Gavel className="h-4 w-4" />,
     resumen:
-      "El que vio cosas que nadie veía. Aportó ideas claves para más de una edición, estuvo en los detalles. Laburo silencioso pero presente siempre.",
-    destacado: "Ideas de edición · Detalles · Presencia silenciosa.",
+      "Cuando hizo falta poner orden, fue de lejos el de la mano más firme del staff. El que tomó las decisiones difíciles cuando el momento lo exigía y no se corrió. Pero también el que vio cosas que nadie veía: aportó ideas claves para más de una edición y estuvo en los detalles. Silencio cuando tocaba, mano dura cuando hizo falta.",
+    destacado: "Mano dura cuando se necesitó · Decisiones difíciles · Ideas de edición · Detalles.",
   },
 ];
 
