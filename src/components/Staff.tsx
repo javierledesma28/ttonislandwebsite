@@ -32,12 +32,12 @@ const STAFF: Miembro[] = [
   {
     nombre: "Perro Karateka",
     alias: "Xemaxote",
-    rol: "Admin & Videógrafo oficial",
+    rol: "Admin · Audiovisual · Ideas de Islas",
     roleIcon: <Video className="h-4 w-4" />,
     resumen:
-      "La cámara, el ojo y la voz audiovisual de TTON. Cada video, cada trailer, cada highlight del server lleva su firma. El trailer 'Qué es un tetón' es suyo.",
+      "La cámara, el ojo y la voz audiovisual de TTON. Cada video, cada trailer, cada highlight del server lleva su firma. Pero además: las últimas islas también llevan su huella creativa — fue el cerebro detrás de muchas de las ideas que dieron forma a las ediciones más recientes. El trailer 'Qué es un tetón' es suyo.",
     destacado:
-      "Salón de la Fama · Trailers oficiales · Highlights de eventos.",
+      "Salón de la Fama · Trailers oficiales · Ideas de las últimas ediciones · Highlights de eventos.",
     redes: [
       { label: "YouTube", url: "https://www.youtube.com/@Xemaxote" },
       { label: "TikTok", url: "https://www.tiktok.com/@xemaxote" },
