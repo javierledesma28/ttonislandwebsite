@@ -2,6 +2,8 @@ import { Hero } from "@/components/Hero";
 import { Cronologia } from "@/components/Cronologia";
 import { Islas } from "@/components/Islas";
 import { Logros } from "@/components/Logros";
+import { OtrosJuegos } from "@/components/OtrosJuegos";
+import { Staff } from "@/components/Staff";
 
 export default function Home() {
   return (
@@ -10,6 +12,8 @@ export default function Home() {
       <Cronologia />
       <Islas />
       <Logros />
+      <OtrosJuegos />
+      <Staff />
     </main>
   );
 }
