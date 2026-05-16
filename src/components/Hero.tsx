@@ -1,192 +1,164 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Play, Clock, Globe2 } from "lucide-react";
-import { HeroBackground, type BackgroundVariant } from "./HeroBackground";
-import { BlurText } from "./BlurText";
-
-/**
- * Cambiá la prop variant en <HeroBackground /> abajo para probar:
- *   "embers"   → partículas/brasas sutiles + vignette (DEFAULT, sobrio)
- *   "gradient" → radiales de óxido + sangre estáticos
- *   "void"     → negro absoluto, ningún efecto
- *   "video"    → trailer VERMIS de fondo (la versión anterior)
- */
-const BG_VARIANT: BackgroundVariant = "embers";
-
-const fadeUp = {
-  initial: { filter: "blur(10px)", opacity: 0, y: 20 },
-  animate: { filter: "blur(0px)", opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" as const },
-};
+import { ArrowUpRight, Play } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-black">
-      {/* Swappable background */}
-      <HeroBackground variant={BG_VARIANT} />
+    <section
+      id="inicio"
+      className="relative w-full min-h-[100svh] overflow-hidden bg-tton-black pt-24 pb-12"
+    >
+      {/* Background — dark gradient + radial */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 30%, rgba(255,176,0,0.06) 0%, transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(127,29,29,0.15) 0%, transparent 60%), #0a0a0a",
+        }}
+      />
 
-      {/* Content overlay */}
-      <div className="relative z-10 flex flex-col min-h-screen">
-        {/* Navbar */}
-        <nav className="fixed top-4 left-0 right-0 px-8 lg:px-16 z-50 flex items-center justify-between">
-          <div className="liquid-glass w-12 h-12 rounded-full flex items-center justify-center">
-            <span className="font-defused text-white text-2xl leading-none tracking-tight">
-              T
-            </span>
-          </div>
-          <div className="hidden md:flex liquid-glass px-1.5 py-1.5 rounded-full items-center gap-1">
-            {[
-              { label: "Inicio", href: "#inicio" },
-              { label: "Historia", href: "#historia" },
-              { label: "Islas", href: "#islas" },
-              { label: "Logros", href: "#logros" },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="px-3 py-2 text-sm font-medium text-white/90 font-body hover:text-white transition-colors"
-              >
-                {label}
-              </a>
-            ))}
-            <a
-              href="#mensajes"
-              className="bg-white text-black px-4 py-2 text-sm font-medium rounded-full flex items-center gap-1 whitespace-nowrap hover:bg-tton-bone transition-colors"
-            >
-              Dejá tu mensaje
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-          <div className="w-12 h-12" aria-hidden />
-        </nav>
+      {/* Coordinate grid (subtle) */}
+      <div
+        className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, #ffb000 1px, transparent 1px), linear-gradient(to bottom, #ffb000 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
 
-        {/* Center content */}
-        <div
-          id="inicio"
-          className="flex-1 flex flex-col items-center justify-center pt-24 pb-12 px-4 min-h-screen"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+        {/* Status strip below HUD */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-terminal text-xs uppercase tracking-[0.2em] text-tton-amber/70 mb-6 flex flex-wrap items-center gap-2"
         >
-          <motion.div
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.4 }}
-            className="liquid-glass rounded-full inline-flex items-center gap-2 pr-3 mb-6"
-          >
-            <span className="bg-white text-black px-3 py-1 text-sm font-defused rounded-full tracking-[0.2em]">
-              CIERRE
-            </span>
-            <span className="text-sm text-white/90 font-body">
-              T-Ton Island se despide · 16 de Mayo 2026
-            </span>
-          </motion.div>
+          <span className="text-tton-bone/60">// ARCHIVE</span>
+          <span className="text-tton-amber">CASE-2021-0042</span>
+          <span className="text-tton-amber/30">━━</span>
+          <span className="text-tton-blood">TRANSMISSION TERMINATED</span>
+          <span className="text-tton-amber/30">━━</span>
+          <span className="text-tton-bone/60">DATE: 16.05.2026</span>
+        </motion.div>
 
-          <BlurText
-            text="Cinco años que no se borran"
-            className="text-6xl md:text-7xl lg:text-[5.5rem] font-heading italic text-white leading-[0.8] max-w-3xl text-center tracking-[-4px]"
-          />
+        {/* Mega Title */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30, filter: "blur(15px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          className="font-defused text-tton-bone leading-[0.85] tracking-tight uppercase"
+        >
+          <span className="block text-7xl md:text-8xl lg:text-[10rem] glitch">
+            T-TON
+          </span>
+          <span className="block text-7xl md:text-8xl lg:text-[10rem] text-tton-amber">
+            ISLAND
+          </span>
+        </motion.h1>
 
-          <motion.p
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 0.8 }}
-            className="mt-6 text-sm md:text-base text-white max-w-2xl text-center font-body font-light leading-relaxed"
-          >
-            La comunidad SCUM en español que empezó en agosto de 2021 cierra hoy
-            su última edición. Pasamos por seis islas, tocamos el Top 12 mundial
-            y vivimos miles de historias. Esta es la nuestra.
-          </motion.p>
+        {/* Subtitle */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="mt-8 max-w-2xl"
+        >
+          <p className="font-terminal text-tton-amber text-sm uppercase tracking-[0.2em] mb-3">
+            // CLASSIFIED ARCHIVE — TEC1 SURVEILLANCE
+          </p>
+          <p className="text-tton-bone/85 font-body text-base md:text-lg leading-relaxed border-l-2 border-tton-amber pl-5">
+            La comunidad SCUM en español más grande de hablahispana entre 2021
+            y 2026. Cinco años de raids, eventos, lore, amistad. Top #1 por 7
+            meses consecutivos. Top 12 mundial. Estos son los archivos
+            desclasificados del cierre.
+          </p>
+        </motion.div>
 
-          <motion.div
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 1.1 }}
-            className="flex flex-wrap items-center justify-center gap-6 mt-8"
+        {/* Action row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.95 }}
+          className="mt-10 flex flex-wrap items-center gap-4"
+        >
+          <a
+            href="#carta"
+            className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-amber bg-tton-amber text-tton-black hover:bg-tton-rust hover:border-tton-rust transition-colors"
+            data-cursor-hover
           >
-            <a
-              href="#carta"
-              className="liquid-glass-strong rounded-full px-5 py-2.5 text-sm font-medium text-white inline-flex items-center gap-2 hover:scale-105 transition-transform"
-            >
-              Leer la carta
-              <ArrowUpRight className="h-5 w-5" />
-            </a>
-            <a
-              href="https://youtu.be/ejLsYE6CEBE"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white inline-flex items-center gap-2 hover:text-tton-rust transition-colors font-body text-sm"
-            >
-              <Play className="h-4 w-4 fill-current" />
-              ¿Qué es un tetón?
-            </a>
-          </motion.div>
+            ACCEDER A LA CARTA
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+          <a
+            href="https://youtu.be/ejLsYE6CEBE"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-bone/30 text-tton-bone hover:border-tton-amber hover:text-tton-amber transition-colors"
+            data-cursor-hover
+          >
+            <Play className="h-4 w-4 fill-current" />
+            ¿QUÉ ES UN TETÓN?
+          </a>
+        </motion.div>
 
-          {/* Stats row */}
-          <motion.div
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 1.3 }}
-            className="flex items-stretch gap-4 mt-12 flex-wrap justify-center"
-          >
-            <StatCard
-              icon={<Clock className="h-7 w-7" strokeWidth={1.5} />}
-              value="4 años 9 meses"
-              label="De comunidad y supervivencia"
-            />
-            <StatCard
-              icon={<Globe2 className="h-7 w-7" strokeWidth={1.5} />}
-              value="Top #12"
-              label="A nivel mundial"
-            />
-          </motion.div>
+        {/* Stat readouts row */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.15 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3"
+        >
+          <StatReadout label="UPTIME" value="4y 9m" hint="OPERACIÓN ACTIVA" />
+          <StatReadout label="GLOBAL RANK" value="#12" hint="RÉCORD MUNDIAL" />
+          <StatReadout label="HABLAHISPANA" value="#1 × 7 m" hint="CONSECUTIVOS" />
+          <StatReadout label="MIEMBROS" value="1389" hint="PRISIONEROS REGISTRADOS" />
+        </motion.div>
 
-          {/* Partners / islands strip */}
-          <motion.div
-            {...fadeUp}
-            transition={{ ...fadeUp.transition, delay: 1.4 }}
-            className="flex flex-col items-center gap-4 mt-16"
-          >
-            <div className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
-              Las islas que fuimos
-            </div>
-            <div className="flex flex-wrap items-center justify-center gap-x-10 md:gap-x-14 gap-y-2 max-w-4xl">
-              {[
-                "Outfreak",
-                "Warfare",
-                "Esperanza",
-                "Ponzoña",
-                "Banana",
-                "Brava",
-                "VERMIS",
-              ].map((isla) => (
-                <span
-                  key={isla}
-                  className="font-heading italic text-white text-2xl md:text-3xl tracking-tight"
-                >
-                  {isla}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+        {/* Caution stripe + tag — bottom band */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 1.4 }}
+          className="mt-14"
+        >
+          <div className="caution-stripe h-2 mb-4" />
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-terminal text-xs uppercase tracking-[0.2em] text-tton-bone/60">
+            <span className="text-tton-amber">// LOCALES REGISTRADOS</span>
+            {["OUTFREAK", "WARFARE", "ESPERANZA", "PONZOÑA", "BANANA", "BRAVA", "VERMIS"].map((isla) => (
+              <span key={isla} className="text-tton-bone hover:text-tton-amber transition-colors">
+                {isla}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
 
-function StatCard({
-  icon,
-  value,
+function StatReadout({
   label,
+  value,
+  hint,
 }: {
-  icon: React.ReactNode;
-  value: string;
   label: string;
+  value: string;
+  hint: string;
 }) {
   return (
-    <div className="liquid-glass p-5 w-[220px] rounded-[1.25rem]">
-      <div className="text-white">{icon}</div>
-      <div className="text-4xl tracking-[-1px] leading-none mt-3 font-heading italic text-white">
-        {value}
-      </div>
-      <div className="text-xs text-white font-body font-light mt-2">
+    <div className="border-l-2 border-tton-amber/60 pl-4 py-2">
+      <p className="font-terminal text-xs uppercase tracking-[0.2em] text-tton-amber/70">
         {label}
-      </div>
+      </p>
+      <p className="mt-1 font-defused text-3xl md:text-4xl text-tton-bone leading-none tabular-nums">
+        {value}
+      </p>
+      <p className="mt-2 font-terminal text-[10px] uppercase tracking-[0.15em] text-tton-bone/50">
+        {hint}
+      </p>
     </div>
   );
 }

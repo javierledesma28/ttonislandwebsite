@@ -2,6 +2,7 @@
 
 import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { SectionHeader } from "./SectionHeader";
 
 interface Logro {
   valor: number;
@@ -44,16 +45,24 @@ export function Logros() {
       className="relative bg-black py-32 md:py-48 px-6 md:px-16"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="mb-20">
-          <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Los números</p>
-          <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-            No nos guardamos nada.
-          </h2>
-          <p className="mt-8 text-white/70 font-body font-light max-w-2xl text-base md:text-lg leading-relaxed">
-            Lo que construimos juntos no es chiste. Sin marketing, sin pauta:
-            a fuerza de comunidad, cariño y noches sin dormir.
-          </p>
-        </div>
+        <SectionHeader
+          fileNumber="003"
+          kicker="MÉTRICAS"
+          classification="DECLASSIFIED"
+          title={
+            <>
+              SYSTEM
+              <br />
+              METRICS.
+            </>
+          }
+          intro={
+            <>
+              Lo que construimos juntos no es chiste. Sin marketing, sin
+              pauta: a fuerza de comunidad, cariño y noches sin dormir.
+            </>
+          }
+        />
 
         {/* Counters grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">

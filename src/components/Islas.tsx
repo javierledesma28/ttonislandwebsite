@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "./SectionHeader";
 
 interface Isla {
   nombre: string;
@@ -68,18 +69,25 @@ export function Islas() {
       id="islas"
       className="relative bg-black py-32 md:py-48 px-6 md:px-16 overflow-hidden"
     >
-      {/* Header */}
-      <div className="max-w-6xl mx-auto mb-20">
-        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Las islas</p>
-        <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-          Siete capítulos.
-          <br />
-          Una sola historia.
-        </h2>
-        <p className="mt-8 text-white/70 font-body font-light max-w-2xl text-base md:text-lg leading-relaxed">
-          Cada isla tuvo su sabor, su gente, su locura, sus cicatrices.
-          Algunas duraron meses, otras un año. Todas dejaron marca.
-        </p>
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          fileNumber="002"
+          kicker="LOCALES"
+          classification="ARCHIVED"
+          title={
+            <>
+              SIETE CAPÍTULOS.
+              <br />
+              UNA HISTORIA.
+            </>
+          }
+          intro={
+            <>
+              Cada isla tuvo su sabor, su gente, su locura, sus cicatrices.
+              Algunas duraron meses, otras un año. Todas dejaron marca.
+            </>
+          }
+        />
       </div>
 
       {/* Grid */}

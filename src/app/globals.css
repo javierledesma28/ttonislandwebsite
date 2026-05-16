@@ -1,37 +1,44 @@
 @import "tailwindcss";
 
-/* ───────────────────────────────────────────────
-   TTON Design Tokens (Tailwind v4 - CSS-driven)
-   ─────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   TTON SURVEILLANCE TERMINAL — Design Tokens
+   ═══════════════════════════════════════════════════════════ */
 
 :root {
-  --background: #000000;
+  --background: #0a0a0a;
   --foreground: #f5f5f0;
 
-  --color-tton-black: #0a0a0a;
-  --color-tton-military: #4a5d23;
-  --color-tton-rust: #d97706;
-  --color-tton-blood: #7f1d1d;
-  --color-tton-bone: #f5f5f0;
-  --color-tton-ash: #1a1a1a;
+  --color-tton-black:   #0a0a0a;
+  --color-tton-ash:     #1a1a1a;
+  --color-tton-steel:   #2a2a2a;
+  --color-tton-amber:   #ffb000;  /* TEC1 industrial signal */
+  --color-tton-rust:    #d97706;  /* Prisoner orange */
+  --color-tton-blood:   #7f1d1d;  /* Termination red */
+  --color-tton-phosphor:#00ff41;  /* Online / REC green */
+  --color-tton-bone:    #f5f5f0;
+  --color-tton-military:#4a5d23;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-tton-black: var(--color-tton-black);
+  --color-tton-black:    var(--color-tton-black);
+  --color-tton-ash:      var(--color-tton-ash);
+  --color-tton-steel:    var(--color-tton-steel);
+  --color-tton-amber:    var(--color-tton-amber);
+  --color-tton-rust:     var(--color-tton-rust);
+  --color-tton-blood:    var(--color-tton-blood);
+  --color-tton-phosphor: var(--color-tton-phosphor);
+  --color-tton-bone:     var(--color-tton-bone);
   --color-tton-military: var(--color-tton-military);
-  --color-tton-rust: var(--color-tton-rust);
-  --color-tton-blood: var(--color-tton-blood);
-  --color-tton-bone: var(--color-tton-bone);
-  --color-tton-ash: var(--color-tton-ash);
 
-  --font-heading: var(--font-instrument-serif), "Instrument Serif", serif;
-  --font-body: var(--font-barlow), "Barlow", system-ui, sans-serif;
-  --font-defused: var(--font-defused), "Impact", "Arial Black", sans-serif;
+  --font-heading:  var(--font-instrument-serif), "Instrument Serif", serif;
+  --font-body:     var(--font-barlow), "Barlow", system-ui, sans-serif;
+  --font-defused:  var(--font-defused), "Impact", "Arial Black", sans-serif;
+  --font-terminal: var(--font-jetbrains), "JetBrains Mono", "Consolas", monospace;
 
-  --radius: 9999px;
+  --radius: 0;  /* sharp corners by default — industrial */
 }
 
 html,
@@ -41,77 +48,184 @@ body {
   font-family: var(--font-body);
 }
 
-/* ───────────────────────────────────────────────
-   Liquid Glass utilities
-   ─────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   SURVEILLANCE FRAME — replaces liquid-glass
+   sharp corners, amber bracket accents, subtle backdrop blur
+   ═══════════════════════════════════════════════════════════ */
 
-.liquid-glass {
-  background: rgba(255, 255, 255, 0.01);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+.liquid-glass,
+.surv-panel {
   position: relative;
+  background: rgba(20, 20, 20, 0.55);
+  backdrop-filter: blur(6px) saturate(0.7);
+  -webkit-backdrop-filter: blur(6px) saturate(0.7);
+  border: 1px solid rgba(255, 176, 0, 0.18);
   overflow: hidden;
 }
-
-.liquid-glass::before {
+.liquid-glass::before,
+.surv-panel::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.45) 0%,
-    rgba(255, 255, 255, 0.15) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.15) 80%,
-    rgba(255, 255, 255, 0.45) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
   pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(255,176,0,0.5) 0, rgba(255,176,0,0.5) 18px, transparent 18px) top left / 100% 1px no-repeat,
+    linear-gradient(to right, rgba(255,176,0,0.5) calc(100% - 18px), rgba(255,176,0,0.5) 100%, transparent 100%) top right / 100% 1px no-repeat,
+    linear-gradient(to bottom, rgba(255,176,0,0.5) 0, rgba(255,176,0,0.5) 18px, transparent 18px) top left / 1px 100% no-repeat,
+    linear-gradient(to bottom, rgba(255,176,0,0.5) calc(100% - 18px), rgba(255,176,0,0.5) 100%, transparent 100%) top right / 1px 100% no-repeat,
+    linear-gradient(to right, rgba(255,176,0,0.5) 0, rgba(255,176,0,0.5) 18px, transparent 18px) bottom left / 100% 1px no-repeat,
+    linear-gradient(to right, rgba(255,176,0,0.5) calc(100% - 18px), rgba(255,176,0,0.5) 100%, transparent 100%) bottom right / 100% 1px no-repeat,
+    linear-gradient(to bottom, rgba(255,176,0,0.5) 0, rgba(255,176,0,0.5) 18px, transparent 18px) bottom left / 1px 100% no-repeat,
+    linear-gradient(to bottom, rgba(255,176,0,0.5) calc(100% - 18px), rgba(255,176,0,0.5) 100%, transparent 100%) bottom right / 1px 100% no-repeat;
 }
 
 .liquid-glass-strong {
-  background: rgba(255, 255, 255, 0.01);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
-  border: none;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15);
   position: relative;
-  overflow: hidden;
+  background: rgba(255, 176, 0, 0.08);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid var(--color-tton-amber);
+  box-shadow: 0 0 0 1px rgba(255, 176, 0, 0.3), 0 0 30px rgba(255, 176, 0, 0.1);
+  color: var(--color-tton-amber);
+}
+.liquid-glass-strong::before {
+  content: none;
 }
 
-.liquid-glass-strong::before {
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL OVERLAYS — scanlines + film grain
+   ═══════════════════════════════════════════════════════════ */
+
+.scan-lines::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 2px,
+    rgba(255, 255, 255, 0.025) 2px,
+    rgba(255, 255, 255, 0.025) 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.film-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 91;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+.crt-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 92;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   HUD utilities
+   ═══════════════════════════════════════════════════════════ */
+
+.hud-text {
+  font-family: var(--font-terminal);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.rec-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-tton-blood);
+  box-shadow: 0 0 8px var(--color-tton-blood);
+  animation: rec-pulse 1.4s ease-in-out infinite;
+}
+@keyframes rec-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-tton-phosphor);
+  box-shadow: 0 0 8px var(--color-tton-phosphor);
+}
+
+/* Glitch text shadow */
+.glitch {
+  position: relative;
+  text-shadow:
+    0.05em 0 0 rgba(255, 176, 0, 0.4),
+    -0.025em -0.05em 0 rgba(217, 119, 6, 0.35),
+    0.025em 0.05em 0 rgba(127, 29, 29, 0.4);
+}
+
+/* Bracket corners — for headings or important blocks */
+.bracket-frame {
+  position: relative;
+  padding: 1.5rem;
+}
+.bracket-frame::before,
+.bracket-frame::after {
   content: "";
   position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.2) 80%,
-    rgba(255, 255, 255, 0.5) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-tton-amber);
+}
+.bracket-frame::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+.bracket-frame::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
 }
 
-/* Selección de texto con paleta TTON */
+/* Caution stripes */
+.caution-stripe {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-tton-amber) 0,
+    var(--color-tton-amber) 8px,
+    #0a0a0a 8px,
+    #0a0a0a 16px
+  );
+}
+
+/* Selection */
 ::selection {
-  background: var(--color-tton-rust);
-  color: var(--color-tton-bone);
+  background: var(--color-tton-amber);
+  color: var(--color-tton-black);
+}
+
+/* Make scrollbar minimal */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-tton-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-tton-amber);
+  opacity: 0.5;
 }

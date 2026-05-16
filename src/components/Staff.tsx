@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Crown, ShieldCheck, Gavel, Video } from "lucide-react";
+import { SectionHeader } from "./SectionHeader";
 
 interface Miembro {
   nombre: string;
@@ -72,18 +73,26 @@ export function Staff() {
       id="staff"
       className="relative bg-black py-32 md:py-48 px-6 md:px-16 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto mb-20">
-        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Quien sostuvo el final</p>
-        <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-          El equipo
-          <br />
-          del cierre.
-        </h2>
-        <p className="mt-8 text-white/70 font-body font-light max-w-2xl text-base md:text-lg leading-relaxed">
-          Esta despedida no la firmo solo. Estos son los que se bancaron el
-          último tramo: gente que está cuando hay que estar, que se levantó a
-          horas imposibles, que dio la cara hasta el último día.
-        </p>
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          fileNumber="005"
+          kicker="PERSONAL"
+          classification="ACTIVE"
+          title={
+            <>
+              EL EQUIPO
+              <br />
+              DEL CIERRE.
+            </>
+          }
+          intro={
+            <>
+              Esta despedida no la firmo solo. Estos son los que se bancaron
+              el último tramo: gente que está cuando hay que estar, que se
+              levantó a horas imposibles, que dio la cara hasta el último día.
+            </>
+          }
+        />
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">

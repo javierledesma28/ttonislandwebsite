@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { SectionHeader } from "./SectionHeader";
 
 interface JuegoServer {
   juego: string;
@@ -63,19 +64,26 @@ export function OtrosJuegos() {
       id="otros-juegos"
       className="relative bg-black py-32 md:py-48 px-6 md:px-16 overflow-hidden"
     >
-      {/* Header */}
-      <div className="max-w-6xl mx-auto mb-20">
-        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Otros mundos</p>
-        <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-          No solo SCUM
-          <br />
-          nos juntó.
-        </h2>
-        <p className="mt-8 text-white/70 font-body font-light max-w-2xl text-base md:text-lg leading-relaxed">
-          Aunque SCUM fue el corazón, también nos animamos a más. Estos son los
-          mundos que también fuimos en estos años — algunos cortos, otros que
-          duraron meses. Todos dejaron historia.
-        </p>
+      <div className="max-w-6xl mx-auto">
+        <SectionHeader
+          fileNumber="004"
+          kicker="OPERACIONES SECUNDARIAS"
+          classification="ARCHIVED"
+          title={
+            <>
+              NO SOLO SCUM
+              <br />
+              NOS JUNTÓ.
+            </>
+          }
+          intro={
+            <>
+              Aunque SCUM fue el corazón, también nos animamos a más. Estos
+              son los mundos que también fuimos en estos años — algunos
+              cortos, otros que duraron meses. Todos dejaron historia.
+            </>
+          }
+        />
       </div>
 
       {/* Grid */}

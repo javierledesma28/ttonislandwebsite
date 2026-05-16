@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { SectionHeader } from "./SectionHeader";
 
 interface Hito {
   fecha: string;
@@ -183,21 +184,26 @@ export function Cronologia() {
       ref={containerRef}
       className="relative bg-black py-32 md:py-48 px-6 md:px-16"
     >
-      {/* Section header */}
-      <div className="max-w-5xl mx-auto mb-24">
-        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Historia</p>
-        <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
-          Cuatro años,
-          <br />
-          nueve meses,
-          <br />
-          mil historias.
-        </h2>
-        <p className="mt-8 text-white/70 font-body font-light max-w-2xl text-base md:text-lg leading-relaxed">
-          No fue solo islas. Fueron eventos, ascensos, llegadas, despedidas,
-          récords, alianzas, expansiones. Estos son los momentos que dejaron
-          marca en estos años.
-        </p>
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          fileNumber="001"
+          kicker="HISTORIA"
+          classification="DECLASSIFIED"
+          title={
+            <>
+              REGISTRO DE
+              <br />
+              TRANSMISIONES.
+            </>
+          }
+          intro={
+            <>
+              No fue solo islas. Fueron eventos, ascensos, llegadas,
+              despedidas, récords, alianzas, expansiones. Estos son los
+              momentos que dejaron marca en estos años.
+            </>
+          }
+        />
       </div>
 
       {/* Timeline */}
