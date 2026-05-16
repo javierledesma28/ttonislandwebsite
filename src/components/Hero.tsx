@@ -2,10 +2,17 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight, Play, Clock, Globe2 } from "lucide-react";
-import { FadingVideo } from "./FadingVideo";
+import { HeroBackground, type BackgroundVariant } from "./HeroBackground";
 import { BlurText } from "./BlurText";
 
-const HERO_VIDEO_SRC = "/videos/vermis-trailer.mp4";
+/**
+ * Cambiá la prop variant en <HeroBackground /> abajo para probar:
+ *   "embers"   → partículas/brasas sutiles + vignette (DEFAULT, sobrio)
+ *   "gradient" → radiales de óxido + sangre estáticos
+ *   "void"     → negro absoluto, ningún efecto
+ *   "video"    → trailer VERMIS de fondo (la versión anterior)
+ */
+const BG_VARIANT: BackgroundVariant = "embers";
 
 const fadeUp = {
   initial: { filter: "blur(10px)", opacity: 0, y: 20 },
@@ -15,16 +22,12 @@ const fadeUp = {
 
 export function Hero() {
   return (
-    <section className="relative w-screen h-screen overflow-hidden bg-black">
-      {/* Background video */}
-      <FadingVideo
-        src={HERO_VIDEO_SRC}
-        className="absolute left-1/2 top-0 -translate-x-1/2 object-cover object-top z-0"
-        style={{ width: "120%", height: "120%" }}
-      />
+    <section className="relative w-full min-h-screen overflow-hidden bg-black">
+      {/* Swappable background */}
+      <HeroBackground variant={BG_VARIANT} />
 
       {/* Content overlay */}
-      <div className="relative z-10 flex flex-col h-full">
+      <div className="relative z-10 flex flex-col min-h-screen">
         {/* Navbar */}
         <nav className="fixed top-4 left-0 right-0 px-8 lg:px-16 z-50 flex items-center justify-between">
           <div className="liquid-glass w-12 h-12 rounded-full flex items-center justify-center">
@@ -33,10 +36,15 @@ export function Hero() {
             </span>
           </div>
           <div className="hidden md:flex liquid-glass px-1.5 py-1.5 rounded-full items-center gap-1">
-            {["Inicio", "Historia", "Islas", "Staff", "Carta"].map((label) => (
+            {[
+              { label: "Inicio", href: "#inicio" },
+              { label: "Historia", href: "#historia" },
+              { label: "Islas", href: "#islas" },
+              { label: "Logros", href: "#logros" },
+            ].map(({ label, href }) => (
               <a
                 key={label}
-                href={`#${label.toLowerCase()}`}
+                href={href}
                 className="px-3 py-2 text-sm font-medium text-white/90 font-body hover:text-white transition-colors"
               >
                 {label}
@@ -54,7 +62,10 @@ export function Hero() {
         </nav>
 
         {/* Center content */}
-        <div className="flex-1 flex flex-col items-center justify-center pt-24 px-4">
+        <div
+          id="inicio"
+          className="flex-1 flex flex-col items-center justify-center pt-24 pb-12 px-4 min-h-screen"
+        >
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 0.4 }}
@@ -86,7 +97,7 @@ export function Hero() {
           <motion.div
             {...fadeUp}
             transition={{ ...fadeUp.transition, delay: 1.1 }}
-            className="flex items-center gap-6 mt-8"
+            className="flex flex-wrap items-center justify-center gap-6 mt-8"
           >
             <a
               href="#carta"
@@ -123,36 +134,36 @@ export function Hero() {
               label="A nivel mundial"
             />
           </motion.div>
-        </div>
 
-        {/* Partners / islands strip */}
-        <motion.div
-          {...fadeUp}
-          transition={{ ...fadeUp.transition, delay: 1.4 }}
-          className="flex flex-col items-center gap-4 pb-8"
-        >
-          <div className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
-            Las islas que fuimos
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-16 gap-y-2">
-            {[
-              "Outfreak",
-              "Warfare",
-              "Esperanza",
-              "Ponzoña",
-              "Banana",
-              "Brava",
-              "VERMIS",
-            ].map((isla) => (
-              <span
-                key={isla}
-                className="font-heading italic text-white text-2xl md:text-3xl tracking-tight"
-              >
-                {isla}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+          {/* Partners / islands strip */}
+          <motion.div
+            {...fadeUp}
+            transition={{ ...fadeUp.transition, delay: 1.4 }}
+            className="flex flex-col items-center gap-4 mt-16"
+          >
+            <div className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
+              Las islas que fuimos
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-x-10 md:gap-x-14 gap-y-2 max-w-4xl">
+              {[
+                "Outfreak",
+                "Warfare",
+                "Esperanza",
+                "Ponzoña",
+                "Banana",
+                "Brava",
+                "VERMIS",
+              ].map((isla) => (
+                <span
+                  key={isla}
+                  className="font-heading italic text-white text-2xl md:text-3xl tracking-tight"
+                >
+                  {isla}
+                </span>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -43,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${instrumentSerif.variable} ${barlow.variable} h-full antialiased`}
+      className={`${instrumentSerif.variable} ${barlow.variable} antialiased`}
     >
-      <body className="min-h-full bg-black text-tton-bone">
+      <body className="bg-black text-tton-bone">
         <BootSequence />
         <CustomCursor />
         <SmoothScroll>{children}</SmoothScroll>
