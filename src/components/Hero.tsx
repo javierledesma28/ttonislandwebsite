@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
 
 export function Hero() {
@@ -27,6 +28,23 @@ export function Hero() {
           backgroundSize: "80px 80px",
         }}
       />
+
+      {/* Logo watermark — sutil, detrás del contenido */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 0.06, scale: 1 }}
+        transition={{ duration: 1.8, ease: "easeOut", delay: 0.6 }}
+        className="absolute right-4 lg:right-16 top-1/2 -translate-y-1/2 z-0 pointer-events-none"
+      >
+        <Image
+          src="/brand/tton-logo.jpg"
+          alt=""
+          width={500}
+          height={500}
+          className="w-[280px] h-[280px] md:w-[420px] md:h-[420px] lg:w-[560px] lg:h-[560px] object-contain mix-blend-screen"
+          priority
+        />
+      </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
         {/* Status strip below HUD */}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const SECTIONS = [
@@ -66,12 +67,15 @@ export function HudTopBar() {
           className="flex items-center gap-3 group"
           data-cursor-hover
         >
-          <span className="bracket-frame inline-flex items-center justify-center w-8 h-8 p-0">
-            <span className="font-defused text-tton-amber text-lg leading-none">
-              T
-            </span>
-          </span>
-          <span className="hidden sm:inline font-defused text-tton-bone text-base tracking-[0.2em]">
+          <Image
+            src="/brand/tton-logo.jpg"
+            alt="T-Ton Island"
+            width={36}
+            height={36}
+            className="object-contain group-hover:scale-105 transition-transform"
+            priority
+          />
+          <span className="hidden sm:inline font-defused text-tton-bone text-base tracking-[0.2em] group-hover:text-tton-amber transition-colors">
             T-TON / ISLAND
           </span>
         </a>
