@@ -5,8 +5,7 @@ import { ArrowUpRight, Play, Clock, Globe2 } from "lucide-react";
 import { FadingVideo } from "./FadingVideo";
 import { BlurText } from "./BlurText";
 
-const HERO_VIDEO_SRC =
-  "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_080021_d598092b-c4c2-4e53-8e46-94cf9064cd50.mp4";
+const HERO_VIDEO_SRC = "/videos/vermis-trailer.mp4";
 
 const fadeUp = {
   initial: { filter: "blur(10px)", opacity: 0, y: 20 },

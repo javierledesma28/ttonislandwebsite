@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Barlow } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { BootSequence } from "@/components/BootSequence";
+import { CustomCursor } from "@/components/CustomCursor";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -42,7 +45,11 @@ export default function RootLayout({
       lang="es"
       className={`${instrumentSerif.variable} ${barlow.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-black text-tton-bone">{children}</body>
+      <body className="min-h-full bg-black text-tton-bone">
+        <BootSequence />
+        <CustomCursor />
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
