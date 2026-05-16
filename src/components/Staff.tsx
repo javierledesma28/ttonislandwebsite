@@ -20,7 +20,7 @@ const STAFF: Miembro[] = [
     rol: "Owner",
     roleIcon: <Crown className="h-4 w-4" />,
     resumen:
-      "El loco que en agosto de 2021 montó un server porque le gustaba el juego y no había nada en español a la altura. Cuatro años nueve meses después, esto es lo que se construyó entre todos.",
+      "El loco que en agosto de 2021 montó un server porque le gustaba el juego, no había nada en español a la altura, y porque acababa de sufrir admin abuse en un raid importante que le hizo querer hacer las cosas distinto. Cuatro años nueve meses después, esto es lo que se construyó entre todos.",
     destacado:
       "Fundador y MOD de Scum en Español Oficial — Hablahispana.",
     redes: [
