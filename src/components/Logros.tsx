@@ -63,7 +63,7 @@ export function Logros() {
         </div>
 
         {/* Extras row */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
           <ExtraCard
             label="// PRESTIGIO"
             title="Jugadores Beta Tester"
@@ -73,6 +73,11 @@ export function Logros() {
             label="// LEGADO"
             title="Traducción oficial al español"
             description="Aportamos a la traducción del juego al español desde 2021, junto con la comunidad hispana de SCUM."
+          />
+          <ExtraCard
+            label="// PRINCIPIO"
+            title="No pay to win — siempre"
+            description="Mantuvimos el espíritu del EULA de SCUM desde antes de que existiera formalmente. Cuando se oficializó, seguimos con el mismo principio: jugar limpio, ganar por ganas y no por billetera."
           />
         </div>
       </div>
