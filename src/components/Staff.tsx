@@ -73,7 +73,7 @@ export function Staff() {
       className="relative bg-black py-32 md:py-48 px-6 md:px-16 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto mb-20">
-        <p className="text-sm font-body text-white/60 mb-6">// Quien sostuvo el final</p>
+        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Quien sostuvo el final</p>
         <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
           El equipo
           <br />
@@ -121,7 +121,7 @@ function StaffCard({ m, index }: { m: Miembro; index: number }) {
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 liquid-glass rounded-full">
             <span className="text-tton-rust">{m.roleIcon}</span>
-            <span className="text-[11px] font-body uppercase tracking-widest text-white/90">
+            <span className="text-xs font-defused tracking-[0.2em] uppercase text-white/90">
               {m.rol}
             </span>
           </div>

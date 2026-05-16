@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Barlow } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { BootSequence } from "@/components/BootSequence";
@@ -16,6 +17,13 @@ const barlow = Barlow({
   variable: "--font-barlow",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
+});
+
+// SCUM official font — display only (uppercase labels, kickers, chips)
+const defused = localFont({
+  src: "../fonts/Defused.ttf",
+  variable: "--font-defused",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -43,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${instrumentSerif.variable} ${barlow.variable} antialiased`}
+      className={`${instrumentSerif.variable} ${barlow.variable} ${defused.variable} antialiased`}
     >
       <body className="bg-black text-tton-bone">
         <BootSequence />

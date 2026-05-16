@@ -185,7 +185,7 @@ export function Cronologia() {
     >
       {/* Section header */}
       <div className="max-w-5xl mx-auto mb-24">
-        <p className="text-sm font-body text-white/60 mb-6">// Historia</p>
+        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Historia</p>
         <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
           Cuatro años,
           <br />

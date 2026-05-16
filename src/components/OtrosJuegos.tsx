@@ -65,7 +65,7 @@ export function OtrosJuegos() {
     >
       {/* Header */}
       <div className="max-w-6xl mx-auto mb-20">
-        <p className="text-sm font-body text-white/60 mb-6">// Otros mundos</p>
+        <p className="text-sm font-defused text-tton-rust/80 mb-6 tracking-[0.3em] uppercase">// Otros mundos</p>
         <h2 className="font-heading italic text-white text-5xl md:text-7xl lg:text-[6rem] leading-[0.9] tracking-[-3px]">
           No solo SCUM
           <br />

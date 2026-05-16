@@ -29,6 +29,7 @@
 
   --font-heading: var(--font-instrument-serif), "Instrument Serif", serif;
   --font-body: var(--font-barlow), "Barlow", system-ui, sans-serif;
+  --font-defused: var(--font-defused), "Impact", "Arial Black", sans-serif;
 
   --radius: 9999px;
 }
