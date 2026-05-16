@@ -81,8 +81,8 @@ export function Logros() {
           />
           <ExtraCard
             label="// CREATORS"
-            title="SajonArco se sumó a la saga"
-            description="Uno de los streamers más reconocidos de la comunidad SCUM hispana pasó por TTON. Su llegada confirmó que lo que se construyó acá tenía peso propio."
+            title="SajonArco — temprano y de los nuestros"
+            description="Uno de los streamers más reconocidos de la comunidad SCUM hispana se sumó al Discord el 7 de febrero de 2022, apenas 5 meses después del nacimiento del server. Member #190 — antes de que tuviéramos siquiera 200 prisioneros."
             href="https://www.youtube.com/@sajonarco"
             linkLabel="Canal de YouTube ↗"
           />
