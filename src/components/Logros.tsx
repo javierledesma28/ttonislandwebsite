@@ -63,7 +63,7 @@ export function Logros() {
         </div>
 
         {/* Extras row */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           <ExtraCard
             label="// PRESTIGIO"
             title="Jugadores Beta Tester"
@@ -78,6 +78,13 @@ export function Logros() {
             label="// PRINCIPIO"
             title="No pay to win — siempre"
             description="Mantuvimos el espíritu del EULA de SCUM desde antes de que existiera formalmente. Cuando se oficializó, seguimos con el mismo principio: jugar limpio, ganar por ganas y no por billetera."
+          />
+          <ExtraCard
+            label="// CREATORS"
+            title="SajonArco se sumó a la saga"
+            description="Uno de los streamers más reconocidos de la comunidad SCUM hispana pasó por TTON. Su llegada confirmó que lo que se construyó acá tenía peso propio."
+            href="https://www.youtube.com/@sajonarco"
+            linkLabel="Canal de YouTube ↗"
           />
         </div>
       </div>
@@ -139,10 +146,14 @@ function ExtraCard({
   label,
   title,
   description,
+  href,
+  linkLabel,
 }: {
   label: string;
   title: string;
   description: string;
+  href?: string;
+  linkLabel?: string;
 }) {
   return (
     <motion.div
@@ -150,15 +161,26 @@ function ExtraCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="liquid-glass rounded-2xl p-6 md:p-8"
+      className="liquid-glass rounded-2xl p-6 md:p-8 flex flex-col"
     >
       <p className="text-xs font-defused tracking-[0.3em] text-tton-rust uppercase">{label}</p>
       <h4 className="mt-3 font-heading italic text-white text-3xl md:text-4xl leading-none tracking-[-1px]">
         {title}
       </h4>
-      <p className="mt-3 text-sm text-white/80 font-body font-light leading-snug">
+      <p className="mt-3 text-sm text-white/80 font-body font-light leading-snug flex-1">
         {description}
       </p>
+      {href && (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block self-start liquid-glass rounded-full px-3 py-1 text-xs font-body text-white/90 hover:text-white hover:scale-105 transition-transform"
+          data-cursor-hover
+        >
+          {linkLabel || "Ver más"}
+        </a>
+      )}
     </motion.div>
   );
 }
