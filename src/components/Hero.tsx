@@ -29,19 +29,20 @@ export function Hero() {
         }}
       />
 
-      {/* Logo watermark — sutil, detrás del contenido */}
+      {/* Logo watermark animado — sutil, detrás del contenido */}
       <motion.div
         initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 0.06, scale: 1 }}
+        animate={{ opacity: 0.12, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-4 lg:right-16 top-1/2 -translate-y-1/2 z-0 pointer-events-none"
+        className="absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 z-0 pointer-events-none"
       >
         <Image
-          src="/brand/tton-logo.jpg"
+          src="/brand/tton-logo-animated.gif"
           alt=""
-          width={500}
-          height={500}
-          className="w-[280px] h-[280px] md:w-[420px] md:h-[420px] lg:w-[560px] lg:h-[560px] object-contain mix-blend-screen"
+          width={600}
+          height={600}
+          unoptimized
+          className="w-[300px] h-[300px] md:w-[460px] md:h-[460px] lg:w-[620px] lg:h-[620px] object-contain"
           priority
         />
       </motion.div>

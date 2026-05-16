@@ -68,11 +68,12 @@ export function HudTopBar() {
           data-cursor-hover
         >
           <Image
-            src="/brand/tton-logo.jpg"
+            src="/brand/tton-logo-animated.gif"
             alt="T-Ton Island"
-            width={36}
-            height={36}
-            className="object-contain group-hover:scale-105 transition-transform"
+            width={40}
+            height={40}
+            unoptimized
+            className="object-contain group-hover:scale-110 transition-transform"
             priority
           />
           <span className="hidden sm:inline font-defused text-tton-bone text-base tracking-[0.2em] group-hover:text-tton-amber transition-colors">
