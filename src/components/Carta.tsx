@@ -2,13 +2,21 @@
 
 import { motion } from "framer-motion";
 import { Heart, ArrowUpRight } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { SectionHeader } from "./SectionHeader";
+
+type CloseVariant = "A" | "B" | "C";
 
 /**
  * FILE 009 — CARTA DE DESPEDIDA
  * El cierre emocional del archivo. Voz primera persona de J@voc.
  */
 export function Carta() {
+  const searchParams = useSearchParams();
+  const variantParam = searchParams?.get("cierre")?.toUpperCase();
+  const variant: CloseVariant =
+    variantParam === "B" ? "B" : variantParam === "C" ? "C" : "A";
+
   return (
     <section
       id="carta"
@@ -309,116 +317,54 @@ export function Carta() {
             que esta puerta queda entreabierta para lo que venga.
           </Para>
 
-          {/* Closing block */}
-          <div className="relative pt-8 border-t border-tton-amber/20">
-            {/* Ghost backdrop — foto de J@voc difuminada, presencia espiritual */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute -top-8 right-0 hidden md:block"
-              style={{
-                width: "320px",
-                height: "320px",
-                opacity: 0.08,
-                filter: "blur(2px) grayscale(0.4)",
-                maskImage:
-                  "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/brand/javoc-cheers.png"
-                alt=""
-                className="w-full h-full object-contain"
-              />
-            </div>
+          {/* Closing block — renderiza variante según ?cierre=A|B|C */}
+          <ClosingBlock variant={variant} />
 
-            <p className="relative font-defused text-tton-bone text-2xl md:text-3xl uppercase tracking-tight leading-tight">
-              Gracias.
-              <br />
-              Gracias por tanto tiempo.
-              <br />
-              Gracias por confiar en este loco
-              <br />
-              que un dia se le ocurrio montar un server.
-            </p>
-            <p className="relative mt-8 font-body text-tton-bone/80 text-base md:text-lg italic">
-              Hasta siempre, T-Tones. Hasta siempre, T-Tonas.
-              <br />
-              Con el corazón en la mano,
-            </p>
-            <div className="relative mt-6 flex items-center gap-4">
-              {/* Avatar real circular — sello personal sutil */}
-              <div className="relative shrink-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/brand/javoc-cheers.png"
-                  alt="J@voc brindando"
-                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-tton-amber/50"
-                  style={{
-                    boxShadow:
-                      "0 0 0 1px rgba(255,176,0,0.15), 0 0 24px rgba(255,176,0,0.12)",
-                  }}
-                />
-                <Heart
-                  className="absolute -bottom-1 -right-1 h-4 w-4 text-tton-blood fill-current bg-tton-black rounded-full p-0.5"
-                  aria-hidden="true"
-                />
-              </div>
-              <div>
-                <p className="font-defused text-tton-amber text-2xl tracking-tight">
-                  J@VOC
-                </p>
-                <p className="hud-text text-tton-bone/50 mt-0.5">
-                  OWNER · T-TON ISLAND · AGO 2021 — MAY 2026
-                </p>
-              </div>
-            </div>
+          {/* Variant switcher (dev/preview) */}
+          <VariantSwitcher current={variant} />
 
-            {/* Contacto — invitación a seguir en Discord */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6 }}
-              className="mt-12 pt-8 border-t border-tton-amber/15"
-            >
-              <p className="hud-text text-tton-amber mb-4">// SEGUIME ESCRIBIENDO</p>
-              <p className="text-tton-bone/85 font-body leading-relaxed text-base md:text-lg mb-6">
-                Si querés charlar, compartir una historia, mandar una foto
-                que se haya perdido, o simplemente decir hola — la puerta
-                queda abierta. El Discord de TTON sigue vivo, y yo también
-                estoy ahí. Cualquier T-Ton es bienvenido cuando quiera.
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="https://discord.gg/kaM93n7u4k"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-amber bg-tton-amber text-tton-black hover:bg-tton-rust hover:border-tton-rust transition-colors"
-                  data-cursor-hover
-                >
-                  <DiscordIcon className="h-4 w-4" />
-                  ENTRAR AL DISCORD DE TTON
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://discord.com/users/510541406721409025"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-bone/30 text-tton-bone hover:border-tton-amber hover:text-tton-amber transition-colors"
-                  data-cursor-hover
-                >
-                  ESCRIBIRME A MÍ
-                  <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </div>
-              <p className="mt-4 hud-text text-tton-bone/50">
-                @J@voc · DISCORD ID 510541406721409025
-              </p>
-            </motion.div>
-          </div>
+          {/* Contacto — invitación a seguir en Discord */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mt-12 pt-8 border-t border-tton-amber/15"
+          >
+            <p className="hud-text text-tton-amber mb-4">// SEGUIME ESCRIBIENDO</p>
+            <p className="text-tton-bone/85 font-body leading-relaxed text-base md:text-lg mb-6">
+              Si querés charlar, compartir una historia, mandar una foto
+              que se haya perdido, o simplemente decir hola — la puerta
+              queda abierta. El Discord de TTON sigue vivo, y yo también
+              estoy ahí. Cualquier T-Ton es bienvenido cuando quiera.
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href="https://discord.gg/kaM93n7u4k"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-amber bg-tton-amber text-tton-black hover:bg-tton-rust hover:border-tton-rust transition-colors"
+                data-cursor-hover
+              >
+                <DiscordIcon className="h-4 w-4" />
+                ENTRAR AL DISCORD DE TTON
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a
+                href="https://discord.com/users/510541406721409025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-bone/30 text-tton-bone hover:border-tton-amber hover:text-tton-amber transition-colors"
+                data-cursor-hover
+              >
+                ESCRIBIRME A MÍ
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+            <p className="mt-4 hud-text text-tton-bone/50">
+              @J@voc · DISCORD ID 510541406721409025
+            </p>
+          </motion.div>
         </article>
       </div>
     </section>
@@ -464,5 +410,159 @@ function Subheading({ children }: { children: React.ReactNode }) {
     >
       {children}
     </motion.h3>
+  );
+}
+
+// ─────────────────────────────────────────────
+// CLOSING BLOCK — 3 variantes de integración de la foto
+// Visible vía ?cierre=A|B|C (default A)
+// ─────────────────────────────────────────────
+
+function ClosingBlock({ variant }: { variant: CloseVariant }) {
+  return (
+    <div className="relative pt-8 border-t border-tton-amber/20">
+      {/* Variante B: ghost backdrop */}
+      {variant === "B" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-8 right-0 hidden md:block"
+          style={{
+            width: "360px",
+            height: "360px",
+            opacity: 0.1,
+            filter: "blur(2px) grayscale(0.4)",
+            maskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/javoc-cheers.png"
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
+
+      {/* Variante C: brindis explícito al inicio del cierre */}
+      {variant === "C" && (
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative flex flex-col items-center text-center mb-12"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/javoc-cheers.png"
+            alt="J@voc brindando"
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-2 border-tton-amber/60"
+            style={{
+              boxShadow:
+                "0 0 0 1px rgba(255,176,0,0.18), 0 0 40px rgba(255,176,0,0.18)",
+            }}
+          />
+          <p className="mt-6 font-heading italic text-tton-amber text-3xl md:text-4xl leading-none">
+            ¡Salud, T-Tones!
+          </p>
+          <p className="mt-3 hud-text text-tton-bone/55">
+            // EL ÚLTIMO BRINDIS
+          </p>
+        </motion.div>
+      )}
+
+      <p className="relative font-defused text-tton-bone text-2xl md:text-3xl uppercase tracking-tight leading-tight">
+        Gracias.
+        <br />
+        Gracias por tanto tiempo.
+        <br />
+        Gracias por confiar en este loco
+        <br />
+        que un dia se le ocurrio montar un server.
+      </p>
+      <p className="relative mt-8 font-body text-tton-bone/80 text-base md:text-lg italic">
+        Hasta siempre, T-Tones. Hasta siempre, T-Tonas.
+        <br />
+        Con el corazón en la mano,
+      </p>
+
+      {/* Signature — Variante A: avatar circular; B y C: solo Heart */}
+      {variant === "A" ? (
+        <div className="relative mt-6 flex items-center gap-4">
+          <div className="relative shrink-0">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/brand/javoc-cheers.png"
+              alt="J@voc brindando"
+              className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-tton-amber/50"
+              style={{
+                boxShadow:
+                  "0 0 0 1px rgba(255,176,0,0.15), 0 0 24px rgba(255,176,0,0.12)",
+              }}
+            />
+            <Heart
+              className="absolute -bottom-1 -right-1 h-4 w-4 text-tton-blood fill-current bg-tton-black rounded-full p-0.5"
+              aria-hidden="true"
+            />
+          </div>
+          <div>
+            <p className="font-defused text-tton-amber text-2xl tracking-tight">
+              J@VOC
+            </p>
+            <p className="hud-text text-tton-bone/50 mt-0.5">
+              OWNER · T-TON ISLAND · AGO 2021 — MAY 2026
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="relative mt-6 flex items-center gap-3">
+          <Heart className="h-5 w-5 text-tton-blood fill-current" />
+          <div>
+            <p className="font-defused text-tton-amber text-2xl tracking-tight">
+              J@VOC
+            </p>
+            <p className="hud-text text-tton-bone/50 mt-0.5">
+              OWNER · T-TON ISLAND · AGO 2021 — MAY 2026
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function VariantSwitcher({ current }: { current: CloseVariant }) {
+  const variants: { id: CloseVariant; label: string; desc: string }[] = [
+    { id: "A", label: "A", desc: "Avatar en la firma" },
+    { id: "B", label: "B", desc: "Ghost backdrop" },
+    { id: "C", label: "C", desc: "Brindis al inicio" },
+  ];
+  return (
+    <div className="mt-10 px-4 py-3 border border-tton-amber/30 bg-tton-amber/[0.04] flex flex-wrap items-center gap-3">
+      <span className="hud-text text-tton-amber/80">// PREVIEW</span>
+      <span className="text-tton-bone/70 font-body text-sm">
+        Probá las 3 variantes de cómo aparece la foto:
+      </span>
+      <div className="flex flex-wrap gap-2 ml-auto">
+        {variants.map((v) => (
+          <a
+            key={v.id}
+            href={`/carta?cierre=${v.id}`}
+            className={`hud-text inline-flex items-center gap-2 px-3 py-1.5 border transition-colors ${
+              v.id === current
+                ? "border-tton-amber bg-tton-amber text-tton-black"
+                : "border-tton-bone/30 text-tton-bone/80 hover:border-tton-amber hover:text-tton-amber"
+            }`}
+            data-cursor-hover
+          >
+            <strong>{v.label}</strong>
+            <span className="opacity-75 hidden md:inline">— {v.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
