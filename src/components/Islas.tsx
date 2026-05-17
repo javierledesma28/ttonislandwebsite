@@ -95,8 +95,8 @@ export function Islas() {
         />
       </div>
 
-      {/* Grid */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {/* Grid — flex con centro de orphans */}
+      <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-5">
         {ISLAS.map((isla, i) => (
           <IslaCard key={isla.nombre} isla={isla} index={i} />
         ))}
@@ -106,16 +106,13 @@ export function Islas() {
 }
 
 function IslaCard({ isla, index }: { isla: Isla; index: number }) {
-  const isLast = isla.nombre === "VERMIS";
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, delay: index * 0.07, ease: "easeOut" }}
-      className={`relative liquid-glass rounded-2xl p-6 md:p-8 min-h-[280px] flex flex-col justify-between overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 ${
-        isLast ? "md:col-span-2 lg:col-span-1 lg:row-span-2" : ""
-      }`}
+      className="relative liquid-glass rounded-2xl p-6 md:p-8 min-h-[280px] flex flex-col justify-between overflow-hidden group cursor-pointer transition-transform hover:-translate-y-1 w-full md:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]"
       data-cursor-hover
     >
       {/* Gradient backdrop revealed on hover */}

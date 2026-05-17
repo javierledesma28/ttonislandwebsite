@@ -134,7 +134,7 @@ function Counter({ logro, index }: { logro: Logro; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="liquid-glass rounded-2xl p-6 md:p-8"
+      className="liquid-glass rounded-2xl p-6 md:p-8 text-center flex flex-col items-center justify-center"
     >
       <div className="font-heading italic text-white text-6xl md:text-7xl lg:text-8xl leading-none tracking-[-3px]">
         {logro.prefijo}
@@ -172,7 +172,7 @@ function ExtraCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="liquid-glass rounded-2xl p-6 md:p-8 flex flex-col"
+      className="liquid-glass rounded-2xl p-6 md:p-8 flex flex-col items-center text-center"
     >
       <p className="text-xs font-defused tracking-[0.3em] text-tton-rust uppercase">{label}</p>
       <h4 className="mt-3 font-heading italic text-white text-3xl md:text-4xl leading-none tracking-[-1px]">
@@ -186,7 +186,7 @@ function ExtraCard({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block self-start liquid-glass rounded-full px-3 py-1 text-xs font-body text-white/90 hover:text-white hover:scale-105 transition-transform"
+          className="mt-4 inline-block self-center liquid-glass rounded-full px-3 py-1 text-xs font-body text-white/90 hover:text-white hover:scale-105 transition-transform"
           data-cursor-hover
         >
           {linkLabel || "Ver más"}

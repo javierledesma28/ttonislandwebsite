@@ -1,19 +1,43 @@
 /**
- * Email helper — Resend integration.
- * Gracefully no-ops si RESEND_API_KEY no está configurado (logs a consola).
+ * Email helper — SMTP via Office 365 (t28.io) usando Nodemailer.
+ *
+ * Configuración esperada en .env:
+ *   SMTP_HOST=smtp.office365.com
+ *   SMTP_PORT=587
+ *   SMTP_USER=tu-email@t28.io
+ *   SMTP_PASSWORD=app-password
+ *   SMTP_FROM="TTON Despedida <tu-email@t28.io>"
+ *
+ * Si SMTP_PASSWORD o SMTP_USER no están seteados, gracefully no-op
+ * con log a consola (el admin puede moderar manualmente en /mensajes).
  */
-import { Resend } from "resend";
+import nodemailer, { type Transporter } from "nodemailer";
 import { signModerationToken, getBaseUrl } from "./moderation-token";
 
-const RESEND_FROM =
-  process.env.RESEND_FROM_EMAIL || "TTON Despedida <onboarding@resend.dev>";
 const ADMIN_EMAIL = "ledesmajavier@outlook.com";
 
-function getClient(): Resend | null {
-  const key = process.env.RESEND_API_KEY;
-  if (!key) return null;
-  return new Resend(key);
+let cachedTransporter: Transporter | null = null;
+
+function getTransporter(): Transporter | null {
+  if (cachedTransporter) return cachedTransporter;
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASSWORD;
+  if (!host || !user || !pass) return null;
+
+  cachedTransporter = nodemailer.createTransport({
+    host,
+    port: port ? parseInt(port, 10) : 587,
+    secure: port === "465",
+    auth: { user, pass },
+    // Office 365 requiere TLS moderno; nodemailer lo maneja por default.
+    requireTLS: true,
+    tls: { ciphers: "TLSv1.2" },
+  });
+  return cachedTransporter;
 }
+
 
 export interface NotifyPayload {
   messageId: string;
@@ -22,15 +46,16 @@ export interface NotifyPayload {
   createdAt: Date;
 }
 
+
 export async function notifyNewMessageForApproval(p: NotifyPayload) {
-  const resend = getClient();
-  if (!resend) {
+  const transporter = getTransporter();
+  if (!transporter) {
     console.log(
-      "[email] RESEND_API_KEY no configurado — saltando envío de notificación. " +
+      "[email] SMTP no configurado — saltando envío. " +
         "Mensaje pendiente en /mensajes.",
       { id: p.messageId, author: p.authorName }
     );
-    return { ok: false, reason: "no-api-key" as const };
+    return { ok: false, reason: "no-smtp-config" as const };
   }
 
   const baseUrl = getBaseUrl();
@@ -55,10 +80,14 @@ export async function notifyNewMessageForApproval(p: NotifyPayload) {
     manualUrl,
   });
 
+  const from =
+    process.env.SMTP_FROM ||
+    `TTON Despedida <${process.env.SMTP_USER}>`;
+
   try {
-    const result = await resend.emails.send({
-      from: RESEND_FROM,
-      to: [ADMIN_EMAIL],
+    const info = await transporter.sendMail({
+      from,
+      to: ADMIN_EMAIL,
       subject: `TTON — Nueva transmisión pendiente: ${p.authorName}`,
       html,
       text:
@@ -68,16 +97,13 @@ export async function notifyNewMessageForApproval(p: NotifyPayload) {
         `Aprobar: ${approveUrl}\nRechazar: ${rejectUrl}\n\n` +
         `O moderar manualmente: ${manualUrl}`,
     });
-    if (result.error) {
-      console.error("[email] Resend error:", result.error);
-      return { ok: false, reason: "send-failed" as const };
-    }
-    return { ok: true };
+    return { ok: true, messageId: info.messageId };
   } catch (err) {
-    console.error("[email] notifyNewMessageForApproval threw:", err);
+    console.error("[email] sendMail threw:", err);
     return { ok: false, reason: "exception" as const };
   }
 }
+
 
 function buildEmailHtml(opts: {
   authorName: string;
