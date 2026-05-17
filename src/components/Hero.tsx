@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
 import { useVideoModal } from "./VideoModal";
-import { FadingVideo } from "./FadingVideo";
 
 export function Hero() {
   const { open } = useVideoModal();
@@ -24,10 +23,15 @@ export function Hero() {
       id="inicio"
       className="relative w-full min-h-[100svh] overflow-hidden bg-tton-black pt-24 pb-12"
     >
-      {/* Background — video VERMIS al fondo */}
+      {/* Background — video VERMIS al fondo, loop seamless */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-tton-black">
-        <FadingVideo
+        <video
           src="/videos/vermis-trailer.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
