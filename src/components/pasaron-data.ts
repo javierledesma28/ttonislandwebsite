@@ -272,5 +272,15 @@ export const AMIGOS: AmigoEntry[] = [
       "Una de las personas que más jugó en TTON desde los primerísimos días. Constancia, presencia, y una conexión real con la comunidad que se sostuvo durante todos estos años. Carol es parte del ADN del server. Gracias por estar siempre.",
     inServer: true,
   },
+  {
+    id: "199254996884127744",
+    display: "Hernancho",
+    username: ".hernancho",
+    avatarUrl: "https://cdn.discordapp.com/avatars/199254996884127744/5d5aa02ea1e4dd33ce3c711e71251d25.png?size=256",
+    highlight: "ORIGEN DEL NOMBRE",
+    story:
+      "El que inspiró el nombre que terminó definiendo todo. Sin Hernancho, TTON no sería TTON — literalmente. Cada vez que alguien escribió 'T-Ton Island', 'Tetón' o 'Ttones', ahí estuvo su huella oculta. Una deuda invisible que hoy queda saldada con este reconocimiento.",
+    inServer: true,
+  },
 ];
 
