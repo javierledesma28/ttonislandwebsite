@@ -360,7 +360,7 @@ export function Carta() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="mt-12 pt-8 border-t border-tton-amber/15"
+            className="mt-12 pt-8 pb-20 md:pb-0 border-t border-tton-amber/15"
           >
             <p className="hud-text text-tton-amber mb-4">// SEGUIME ESCRIBIENDO</p>
             <p className="text-tton-bone/85 font-body leading-relaxed text-base md:text-lg mb-6">

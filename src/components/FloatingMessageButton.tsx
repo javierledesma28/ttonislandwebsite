@@ -27,7 +27,7 @@ export function FloatingMessageButton() {
         aria-label="Dejar un mensaje"
       >
         <MessageSquarePlus className="h-4 w-4 md:h-5 md:w-5" />
-        <span className="hidden sm:inline font-bold tracking-[0.15em] text-xs md:text-sm">
+        <span className="font-bold tracking-[0.12em] md:tracking-[0.15em] text-[10px] sm:text-xs md:text-sm">
           DEJAR MENSAJE
         </span>
       </motion.a>
