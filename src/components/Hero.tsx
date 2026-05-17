@@ -73,7 +73,7 @@ export function Hero() {
           <span className="text-tton-amber/30">━━</span>
           <span className="text-tton-blood">TRANSMISSION TERMINATED</span>
           <span className="text-tton-amber/30">━━</span>
-          <span className="text-tton-bone/60">DATE: 16.05.2026</span>
+          <span className="text-tton-bone/60">DATE: 17.05.2026</span>
         </motion.div>
 
         {/* Mega Title — heartbeat pulse on hover */}

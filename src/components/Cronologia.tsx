@@ -169,7 +169,7 @@ const HITOS: Hito[] = [
     tipo: "isla",
   },
   {
-    fecha: "16 May 2026",
+    fecha: "17 May 2026",
     titulo: "Cierre",
     detalle: "La vida tiene ciclos. Cerramos con la cabeza en alto y el corazón lleno. El Discord queda abierto, para lo que venga.",
     tipo: "cierre",

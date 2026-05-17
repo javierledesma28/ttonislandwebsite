@@ -15,6 +15,7 @@ const SECTIONS = [
   { label: "06 / PASARON", href: "#pasaron" },
   { label: "07 / ARCHIVO", href: "#galeria" },
   { label: "08 / MENSAJES", href: "#mensajes" },
+  { label: "09 / CARTA", href: "#carta" },
 ];
 
 export function HudTopBar() {
