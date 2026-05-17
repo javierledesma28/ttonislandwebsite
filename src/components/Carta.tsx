@@ -244,7 +244,10 @@ export function Carta() {
           <Para>
             Sería deshonesto pintar todo color de rosa. Hubo discusiones,
             alianzas que se rompieron, distanciamientos, decisiones que dolió
-            tomar, despedidas que no fueron por nada bueno. No las niego ni
+            tomar, despedidas que no fueron por nada bueno. Incluso me tocó
+            tener que <strong className="text-tton-bone">bannear a un admin</strong>{" "}
+            — una de esas decisiones que un owner espera nunca tener que
+            firmar, pero que cuando hace falta, no se duda. No las niego ni
             las disfracé. Pero algo se sostuvo desde el día cero hasta hoy
             mismo, sin negociarlo nunca:{" "}
             <strong className="text-tton-amber">el respeto como estandarte</strong>.
