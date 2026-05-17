@@ -66,7 +66,7 @@ export function PasaronPorTTON() {
             <h3 className="font-defused text-tton-bone text-4xl md:text-5xl lg:text-6xl leading-[0.95] tracking-tight uppercase">
               Amigos que
               <br />
-              TTON me dejó.
+              TTON me dejo.
             </h3>
             <p className="mt-6 text-tton-bone/70 font-body font-light text-base md:text-lg leading-relaxed border-l-2 border-tton-rust pl-5">
               Más allá de los roles, los rangos y las islas — TTON me regaló
