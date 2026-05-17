@@ -226,11 +226,17 @@ export function Carta() {
           <Subheading>// A VOS, SIN NOMBRARTE</Subheading>
 
           <Para>
-            En diciembre de 2023, alguien — que pidió no ser nombrado — donó{" "}
-            <strong>2.000 dólares</strong> para que el server siguiera
-            adelante. Sin ese gesto, varias de las cosas que terminamos
-            construyendo no hubieran sido posibles. Vos sabés perfectamente
-            quién sos. Gracias por confiar cuando confiar era difícil.
+            En diciembre de 2023, alguien — que pidió{" "}
+            <em className="text-tton-amber not-italic">explícitamente</em> no
+            ser nombrado — donó <strong>2.000 dólares</strong> para que el
+            server siguiera adelante. A mí me hubiera encantado anunciarlo
+            como cada avance en{" "}
+            <span className="font-mono text-tton-amber">#anuncios</span>, con
+            su nombre bien arriba y todo el reconocimiento que se ganó — pero
+            respeto su pedido al pie de la letra. Sin ese gesto, varias de
+            las cosas que terminamos construyendo no hubieran sido posibles.
+            Vos sabés perfectamente quién sos. Gracias por confiar cuando
+            confiar era difícil.
           </Para>
 
           <Subheading>// LO QUE NO FUE FÁCIL</Subheading>
