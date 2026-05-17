@@ -144,6 +144,16 @@ export const PASARON: PasaronEntry[] = [
     inServer: true,
   },
   {
+    id: "1374445074007593042",
+    display: "Sr LOBO",
+    username: "sr_lobo_solitario",
+    avatarUrl: "https://cdn.discordapp.com/avatars/1374445074007593042/257af4a47ab33ebc21d6876605c75def.png?size=256",
+    role: "PERSONAJE",
+    era: "Jun 2025",
+    story: "El Sr. Lobo Solitario — uno de los personajes que se ganó un lugar en el folklore de la isla. De los que dejan huella sin hacer ruido.",
+    inServer: true,
+  },
+  {
     id: "687953247469699083",
     display: "ha_k_er",
     username: "ha_k_er",
@@ -184,3 +194,53 @@ export const PASARON: PasaronEntry[] = [
     inServer: true,
   },
 ];
+
+// ─────────────────────────────────────────────
+// AMIGOS QUE TTON ME DEJÓ
+// Menciones personales del owner (J@voc) — amistades nacidas adentro
+// del server que trascendieron lo virtual. Tratamiento visual distinto.
+// ─────────────────────────────────────────────
+
+export interface AmigoEntry {
+  id: string;
+  display: string;
+  username?: string | null;
+  avatarUrl: string;
+  highlight: string;       // chip de relación ("PRIMER CLAN", "GRAN AMIGO", etc.)
+  story: string;
+  inServer: boolean;
+}
+
+export const AMIGOS: AmigoEntry[] = [
+  {
+    id: "164186448990437377",
+    display: "Eitadan",
+    username: "eitadan.",
+    avatarUrl: "https://cdn.discordapp.com/avatars/164186448990437377/dee88f2c572b926d356aadaf9470d88e.png?size=256",
+    highlight: "PRIMER CLAN",
+    story:
+      "La persona con la que armé mi primer clan en SCUM. Antes incluso de que TTON fuera lo que terminó siendo, ya jugábamos juntos. De esas amistades que dejan huella desde el primer raid.",
+    inServer: true,
+  },
+  {
+    id: "354377511288963072",
+    display: "Lemita",
+    username: "lemaneitor",
+    avatarUrl: "https://cdn.discordapp.com/avatars/354377511288963072/29e4544e851bafe70a6b661e4947848c.png?size=256",
+    highlight: "GRAN AMIGO",
+    story:
+      "Una de las mejores cosas que me dejó SCUM. Compañera de raids, conversaciones y momentos que solo entendemos los que estuvimos adentro. Gracias, Lemita.",
+    inServer: true,
+  },
+  {
+    id: "317031405928448000",
+    display: "Gilgat",
+    username: "gilgat",
+    avatarUrl: "https://cdn.discordapp.com/avatars/317031405928448000/c9eef601becc9a4da7b0875ee00a136e.png?size=256",
+    highlight: "GRAN AMIGO",
+    story:
+      "El server me regaló esta amistad y la guardo intacta. Aunque la isla cierre, lo que nació en TTON con vos no se cierra. Gracias, hermano.",
+    inServer: false,
+  },
+];
+
