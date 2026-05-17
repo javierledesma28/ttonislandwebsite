@@ -2,6 +2,9 @@ name: tton
 
 services:
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: ttonisland:latest
     container_name: tton-app
     restart: unless-stopped
