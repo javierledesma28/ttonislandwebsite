@@ -13,7 +13,7 @@ import { X } from "lucide-react";
  * Drop a transparent PNG/JPG at /public/brand/tec1-drone.png to enable.
  */
 
-const SRC = "/brand/tec1-drone.png"; // user provides this asset
+const SRC = "/brand/dronescumtransparente.png";
 
 const SCAN_DATA = [
   { label: "PRISIONERO", value: "0042" },

@@ -10,7 +10,7 @@ export function Hero() {
 
   const openVermisTrailer = () =>
     open({
-      youtubeId: "ejLsYE6CEBE",
+      src: "/videos/vermis-trailer.mp4",
       title: "¿QUÉ ES UN TETÓN?",
       caption:
         "Trailer oficial del Proyecto VERMIS — dirigido y editado por Perro Karateka (Xemaxote).",

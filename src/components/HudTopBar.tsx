@@ -11,7 +11,7 @@ const SECTIONS = [
   { label: "02 / ISLAS", href: "#islas" },
   { label: "03 / METRICAS", href: "#logros" },
   { label: "04 / OTROS", href: "#otros-juegos" },
-  { label: "05 / PERSONAL", href: "#staff" },
+  { label: "05 / STAFF", href: "#staff" },
   { label: "06 / ARCHIVO", href: "#galeria" },
 ];
 
@@ -21,7 +21,20 @@ export function HudTopBar() {
 
   const openLore = () =>
     open({
-      youtubeId: "DvNgT3PrZSE",
+      src: "/videos/scum-comic-lore.mp4",
+      tracks: [
+        {
+          src: "/videos/scum-comic-lore.es.vtt",
+          srcLang: "es",
+          label: "Español",
+          default: true,
+        },
+        {
+          src: "/videos/scum-comic-lore.en.vtt",
+          srcLang: "en",
+          label: "English",
+        },
+      ],
       title: "EL LORE DE SCUM",
       caption:
         "Audio movie del comic oficial de SCUM — narrado y voced por ItsLoafLord. La historia detrás del mundo donde vivimos cinco años.",

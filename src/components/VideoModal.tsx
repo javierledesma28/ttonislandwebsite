@@ -12,8 +12,22 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
+interface VideoTrack {
+  src: string;       // path to .vtt
+  srcLang: string;   // "es", "en"
+  label: string;     // "Español", "English"
+  default?: boolean;
+}
+
 interface VideoPayload {
-  youtubeId: string;
+  /** Local video path (e.g. /videos/foo.mp4) — preferred to avoid YouTube dependency */
+  src?: string;
+  /** Optional YouTube ID — legacy / fallback. If both, src wins. */
+  youtubeId?: string;
+  /** Optional poster image for the local video while loading */
+  poster?: string;
+  /** Optional subtitle tracks for local video */
+  tracks?: VideoTrack[];
   title: string;
   caption?: string;
   classification?: "DECLASSIFIED" | "ACTIVE" | "ARCHIVED" | "TERMINATED" | "CLASSIFIED";
@@ -105,9 +119,14 @@ function VideoOverlay({
 
   const classification = payload.classification || "CLASSIFIED";
   const fileLabel = payload.fileLabel || "VID-FEED-0001";
-
-  // YouTube nocookie embed with autoplay
-  const src = `https://www.youtube-nocookie.com/embed/${payload.youtubeId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`;
+  const useLocal = !!payload.src;
+  // YouTube nocookie embed with autoplay (fallback only)
+  const ytSrc = payload.youtubeId
+    ? `https://www.youtube-nocookie.com/embed/${payload.youtubeId}?autoplay=1&modestbranding=1&rel=0&iv_load_policy=3`
+    : null;
+  const sourceLabel = useLocal
+    ? `LOCAL ARCHIVE / ${(payload.src || "").split("/").pop()}`
+    : `youtube.com / ${payload.youtubeId}`;
 
   return (
     <motion.div
@@ -180,13 +199,38 @@ function VideoOverlay({
         {/* Bracket-framed video */}
         <div className="bracket-frame !p-0 relative">
           <div className="relative aspect-video bg-tton-black border border-tton-amber/40 overflow-hidden">
-            <iframe
-              src={src}
-              title={payload.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="absolute inset-0 w-full h-full"
-            />
+            {useLocal ? (
+              <video
+                key={payload.src}
+                src={payload.src}
+                poster={payload.poster}
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+                className="absolute inset-0 w-full h-full bg-tton-black"
+                crossOrigin="anonymous"
+              >
+                {(payload.tracks || []).map((t) => (
+                  <track
+                    key={t.srcLang}
+                    kind="subtitles"
+                    src={t.src}
+                    srcLang={t.srcLang}
+                    label={t.label}
+                    default={t.default}
+                  />
+                ))}
+              </video>
+            ) : ytSrc ? (
+              <iframe
+                src={ytSrc}
+                title={payload.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              />
+            ) : null}
             {/* Scanlines overlay on the video itself */}
             <div
               className="pointer-events-none absolute inset-0 opacity-25 mix-blend-overlay"
@@ -207,9 +251,7 @@ function VideoOverlay({
           ) : (
             <span />
           )}
-          <span className="text-tton-amber/70">
-            SOURCE: youtube.com / {payload.youtubeId}
-          </span>
+          <span className="text-tton-amber/70">SOURCE: {sourceLabel}</span>
         </div>
       </motion.div>
     </motion.div>
