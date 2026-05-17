@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
 import { useVideoModal } from "./VideoModal";
+import { FadingVideo } from "./FadingVideo";
 
 export function Hero() {
   const { open } = useVideoModal();
@@ -11,7 +12,7 @@ export function Hero() {
   const openVermisTrailer = () =>
     open({
       src: "/videos/vermis-trailer.mp4",
-      title: "¿QUÉ ES UN TETÓN?",
+      title: "QUE ES UN TETON?",
       caption:
         "Trailer oficial del Proyecto VERMIS — dirigido y editado por Perro Karateka (Xemaxote).",
       classification: "DECLASSIFIED",
@@ -23,18 +24,26 @@ export function Hero() {
       id="inicio"
       className="relative w-full min-h-[100svh] overflow-hidden bg-tton-black pt-24 pb-12"
     >
-      {/* Background — dark gradient + radial */}
+      {/* Background — video VERMIS al fondo */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-tton-black">
+        <FadingVideo
+          src="/videos/vermis-trailer.mp4"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Dark overlay para legibilidad del texto sobre el video */}
       <div
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 30%, rgba(255,176,0,0.06) 0%, transparent 55%), radial-gradient(ellipse at 50% 100%, rgba(127,29,29,0.15) 0%, transparent 60%), #0a0a0a",
+            "linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.7) 60%, rgba(10,10,10,0.85) 100%), radial-gradient(ellipse at 50% 30%, rgba(255,176,0,0.05) 0%, transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(127,29,29,0.12) 0%, transparent 60%)",
         }}
       />
 
-      {/* Coordinate grid (subtle) */}
+      {/* Coordinate grid (subtle, encima del video pero detrás del contenido) */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none"
+        className="absolute inset-0 z-[2] opacity-[0.04] pointer-events-none"
         style={{
           backgroundImage:
             "linear-gradient(to right, #ffb000 1px, transparent 1px), linear-gradient(to bottom, #ffb000 1px, transparent 1px)",
@@ -45,9 +54,9 @@ export function Hero() {
       {/* Logo watermark animado — alineado horizontalmente con el título */}
       <motion.div
         initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 0.18, scale: 1 }}
+        animate={{ opacity: 0.22, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-4 md:right-10 lg:right-16 top-24 md:top-32 lg:top-36 z-0 pointer-events-none"
+        className="absolute right-4 md:right-10 lg:right-16 top-24 md:top-32 lg:top-36 z-[3] pointer-events-none"
       >
         <Image
           src="/brand/tton-logo-animated.gif"
