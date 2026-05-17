@@ -266,7 +266,10 @@ export function Carta() {
             amigo para siempre. El que mandó un meme al canal y nos hizo
             cagar de risa. El que ayudó a un noob sin esperar nada a cambio.
             El que ganó un sorteo, el que perdió todo en un raid, el que
-            volvió a empezar.
+            volvió a empezar. El que esperaba una edición PVE y se la bancó
+            jugando en otros servers cuando la nuestra venía muy PVP,
+            sabiendo que la próxima podía ser la suya. Y así tantos otros
+            perfiles más — cada uno con su historia.
           </Para>
 
           <Para className="text-tton-bone text-xl md:text-2xl font-medium">
