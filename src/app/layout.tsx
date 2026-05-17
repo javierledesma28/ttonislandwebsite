@@ -6,6 +6,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { BootSequence } from "@/components/BootSequence";
 import { CustomCursor } from "@/components/CustomCursor";
 import { HudTopBar } from "@/components/HudTopBar";
+import { VideoModalProvider } from "@/components/VideoModal";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -64,8 +65,10 @@ export default function RootLayout({
         <div className="crt-vignette" />
         <BootSequence />
         <CustomCursor />
-        <HudTopBar />
-        <SmoothScroll>{children}</SmoothScroll>
+        <VideoModalProvider>
+          <HudTopBar />
+          <SmoothScroll>{children}</SmoothScroll>
+        </VideoModalProvider>
       </body>
     </html>
   );

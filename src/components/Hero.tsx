@@ -3,8 +3,21 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, Play } from "lucide-react";
+import { useVideoModal } from "./VideoModal";
 
 export function Hero() {
+  const { open } = useVideoModal();
+
+  const openVermisTrailer = () =>
+    open({
+      youtubeId: "ejLsYE6CEBE",
+      title: "¿QUÉ ES UN TETÓN?",
+      caption:
+        "Trailer oficial del Proyecto VERMIS — dirigido y editado por Perro Karateka (Xemaxote).",
+      classification: "DECLASSIFIED",
+      fileLabel: "VID-002 · VERMIS · TRAILER",
+    });
+
   return (
     <section
       id="inicio"
@@ -111,16 +124,20 @@ export function Hero() {
             ACCEDER A LA CARTA
             <ArrowUpRight className="h-4 w-4" />
           </a>
-          <a
-            href="https://youtu.be/ejLsYE6CEBE"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-bone/30 text-tton-bone hover:border-tton-amber hover:text-tton-amber transition-colors"
+          <button
+            type="button"
+            onClick={openVermisTrailer}
+            className="hud-text inline-flex items-center gap-2 px-5 py-3 border-2 border-tton-bone/30 text-tton-bone hover:border-tton-amber hover:text-tton-amber transition-colors group relative overflow-hidden"
             data-cursor-hover
           >
-            <Play className="h-4 w-4 fill-current" />
-            ¿QUÉ ES UN TETÓN?
-          </a>
+            {/* Hover glitch flash */}
+            <span className="absolute inset-0 bg-tton-amber/0 group-hover:bg-tton-amber/10 transition-colors pointer-events-none" />
+            {/* Inline REC dot reveal on hover */}
+            <span className="rec-dot opacity-0 group-hover:opacity-100 transition-opacity" />
+            <Play className="h-4 w-4 fill-current group-hover:hidden" />
+            <span className="group-hover:hidden">¿QUÉ ES UN TETÓN?</span>
+            <span className="hidden group-hover:inline glitch">VER TRANSMISIÓN</span>
+          </button>
         </motion.div>
 
         {/* Stat readouts row */}
