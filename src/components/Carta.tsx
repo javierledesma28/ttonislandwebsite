@@ -95,7 +95,7 @@ export function Carta() {
           <Para>
             No voy a poner cifras. Pero sí voy a ser honesto:{" "}
             <strong className="text-tton-bone">
-              fueron miles de dólares de mi bolsillo
+              fueron pocos miles de dólares de mi bolsillo
             </strong>{" "}
             durante todos estos años, y horas que ya no se cuentan. Los
             primeros años, sobre todo, demandaron una cantidad de horas
@@ -108,8 +108,8 @@ export function Carta() {
             <strong>GPortal</strong> sostuvo los años de crecimiento, y
             terminamos en <strong>GG-Host</strong>. Cada uno una era, cada uno
             un capítulo técnico atrás de las islas. Hubo plugins pagos, bots
-            customizados, sponsors que ayudaron, una donación anónima que
-            destrabó momentos críticos. Y entre todo eso, plata mía que entró
+            customizados, sponsors que ayudaron, una donación anónima de
+            2.000 dólares que destrabó momentos críticos. Y entre todo eso, plata mía que entró
             y nunca salió. Y está bien. Eligo no medir TTON en plata.
           </Para>
 
