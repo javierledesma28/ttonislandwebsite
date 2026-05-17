@@ -1,41 +1,69 @@
 /**
- * Email helper — SMTP via Office 365 (t28.io) usando Nodemailer.
+ * Email helper — Microsoft Graph API (client credentials flow).
+ *
+ * Envía como feedback@t28.io vía la misma App Registration que usa AzureHub.
  *
  * Configuración esperada en .env:
- *   SMTP_HOST=smtp.office365.com
- *   SMTP_PORT=587
- *   SMTP_USER=tu-email@t28.io
- *   SMTP_PASSWORD=app-password
- *   SMTP_FROM="TTON Despedida <tu-email@t28.io>"
+ *   GRAPH_TENANT_ID     — Entra ID tenant GUID
+ *   GRAPH_CLIENT_ID     — App Registration client ID
+ *   GRAPH_CLIENT_SECRET — App Registration client secret VALUE
+ *   GRAPH_SENDER_EMAIL  — feedback@t28.io (mailbox licenciado en el tenant)
  *
- * Si SMTP_PASSWORD o SMTP_USER no están seteados, gracefully no-op
- * con log a consola (el admin puede moderar manualmente en /mensajes).
+ * Si falta alguna, gracefully no-op con log (admin modera manualmente en /mensajes).
  */
-import nodemailer, { type Transporter } from "nodemailer";
 import { signModerationToken, getBaseUrl } from "./moderation-token";
 
 const ADMIN_EMAIL = "ledesmajavier@outlook.com";
 
-let cachedTransporter: Transporter | null = null;
+interface CachedToken {
+  value: string;
+  expiresAt: number; // epoch ms
+}
+let cachedToken: CachedToken | null = null;
 
-function getTransporter(): Transporter | null {
-  if (cachedTransporter) return cachedTransporter;
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASSWORD;
-  if (!host || !user || !pass) return null;
+function getConfig() {
+  const tenantId = process.env.GRAPH_TENANT_ID;
+  const clientId = process.env.GRAPH_CLIENT_ID;
+  const clientSecret = process.env.GRAPH_CLIENT_SECRET;
+  const sender = process.env.GRAPH_SENDER_EMAIL;
+  if (!tenantId || !clientId || !clientSecret || !sender) return null;
+  return { tenantId, clientId, clientSecret, sender };
+}
 
-  cachedTransporter = nodemailer.createTransport({
-    host,
-    port: port ? parseInt(port, 10) : 587,
-    secure: port === "465",
-    auth: { user, pass },
-    // Office 365 requiere TLS moderno; nodemailer lo maneja por default.
-    requireTLS: true,
-    tls: { ciphers: "TLSv1.2" },
-  });
-  return cachedTransporter;
+async function getAccessToken(cfg: NonNullable<ReturnType<typeof getConfig>>) {
+  const now = Date.now();
+  if (cachedToken && cachedToken.expiresAt > now + 60_000) {
+    return cachedToken.value;
+  }
+
+  const res = await fetch(
+    `https://login.microsoftonline.com/${cfg.tenantId}/oauth2/v2.0/token`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "client_credentials",
+        client_id: cfg.clientId,
+        client_secret: cfg.clientSecret,
+        scope: "https://graph.microsoft.com/.default",
+      }),
+    }
+  );
+
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Graph token error ${res.status}: ${body}`);
+  }
+
+  const data = (await res.json()) as {
+    access_token: string;
+    expires_in: number;
+  };
+  cachedToken = {
+    value: data.access_token,
+    expiresAt: now + data.expires_in * 1000,
+  };
+  return cachedToken.value;
 }
 
 
@@ -48,14 +76,14 @@ export interface NotifyPayload {
 
 
 export async function notifyNewMessageForApproval(p: NotifyPayload) {
-  const transporter = getTransporter();
-  if (!transporter) {
+  const cfg = getConfig();
+  if (!cfg) {
     console.log(
-      "[email] SMTP no configurado — saltando envío. " +
+      "[email] Graph no configurado — saltando envío. " +
         "Mensaje pendiente en /mensajes.",
       { id: p.messageId, author: p.authorName }
     );
-    return { ok: false, reason: "no-smtp-config" as const };
+    return { ok: false, reason: "no-graph-config" as const };
   }
 
   const baseUrl = getBaseUrl();
@@ -80,27 +108,42 @@ export async function notifyNewMessageForApproval(p: NotifyPayload) {
     manualUrl,
   });
 
-  const from =
-    process.env.SMTP_FROM ||
-    `TTON Despedida <${process.env.SMTP_USER}>`;
-
   try {
-    const info = await transporter.sendMail({
-      from,
-      to: ADMIN_EMAIL,
-      subject: `TTON — Nueva transmisión pendiente: ${p.authorName}`,
-      html,
-      text:
-        `Nueva transmisión pendiente de aprobación.\n\n` +
-        `De: ${p.authorName}\nCuándo: ${fmtDate}\n\n` +
-        `Mensaje:\n${p.content}\n\n` +
-        `Aprobar: ${approveUrl}\nRechazar: ${rejectUrl}\n\n` +
-        `O moderar manualmente: ${manualUrl}`,
-    });
-    return { ok: true, messageId: info.messageId };
+    const token = await getAccessToken(cfg);
+
+    const res = await fetch(
+      `https://graph.microsoft.com/v1.0/users/${encodeURIComponent(cfg.sender)}/sendMail`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({
+          message: {
+            subject: `TTON — Nueva transmisión pendiente: ${p.authorName}`,
+            body: { contentType: "HTML", content: html },
+            toRecipients: [
+              {
+                emailAddress: { address: ADMIN_EMAIL, name: "Javier Ledesma" },
+              },
+            ],
+          },
+          saveToSentItems: false,
+        }),
+      }
+    );
+
+    if (res.ok || res.status === 202) {
+      return { ok: true as const };
+    }
+
+    const errBody = await res.text();
+    console.error(`[email] Graph sendMail ${res.status}:`, errBody);
+    return { ok: false as const, reason: "graph-error" as const, status: res.status };
   } catch (err) {
     console.error("[email] sendMail threw:", err);
-    return { ok: false, reason: "exception" as const };
+    return { ok: false as const, reason: "exception" as const };
   }
 }
 
