@@ -47,12 +47,12 @@ const STAFF: Miembro[] = [
   },
   {
     nombre: "Tavo Montenegro",
-    alias: "Tavo Ryuichi",
+    alias: "Tavito · TavoRyuichi",
     rol: "Mod",
     roleIcon: <ShieldCheck className="h-4 w-4" />,
     resumen:
-      "La cabeza fría cuando todo se prendía fuego. Su trabajo de moderación y ese cariño con la comunidad sostuvieron una cantidad de momentos que ni te imaginás.",
-    destacado: "Moderación · Cariño comunitario · Eventos.",
+      "La cabeza fría cuando todo se prendía fuego. Su trabajo de moderación y ese cariño con la comunidad sostuvieron una cantidad de momentos que ni te imaginás. Y por si tu memoria flaquea: ¿te acordás del Sr. Banhour? Ese personaje legendario también era él — Tavito le dio voz, presencia y ese aire entre divertido y temible que lo volvió parte del folklore TTON.",
+    destacado: "Moderación · Cariño comunitario · Eventos · Sr. Banhour.",
     redes: [
       { label: "YouTube", url: "https://www.youtube.com/@TavoRyuichi" },
     ],

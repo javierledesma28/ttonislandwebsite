@@ -11,7 +11,9 @@ export type GalleryCategory =
   | "lore"
   | "eventos"
   | "comunidad"
-  | "roleplay";
+  | "roleplay"
+  | "bases"
+  | "fotos";
 
 export const CATEGORY_LABEL: Record<GalleryCategory | "todos", string> = {
   todos: "TODO",
@@ -21,6 +23,8 @@ export const CATEGORY_LABEL: Record<GalleryCategory | "todos", string> = {
   eventos: "EVENTOS",
   comunidad: "COMUNIDAD",
   roleplay: "ROLEPLAY",
+  bases: "BASES ÉPICAS",
+  fotos: "OJO TETÓN",
 };
 
 export const GALLERY_ITEMS: GalleryItem[] = [
@@ -278,5 +282,164 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     category: "lore",
     year: 2023,
     caption: "La fuerza militarizada... está llegando",
+  },
+
+  // ────────────────────────────────────────────
+  // BASES ÉPICAS — del canal #bases-epicas (curadas por reacciones)
+  // ────────────────────────────────────────────
+  {
+    filename: "2023-11-17_bases_Xemaxote_00.png",
+    category: "bases",
+    year: 2023,
+    caption:
+      "La Ciudadela — Distrito Delta de Isla Ponzoña. Una de las construcciones más fotogénicas del server. Foto: Xemaxote.",
+  },
+  {
+    filename: "2023-07-09_bases_Xemaxote_01.png",
+    category: "bases",
+    year: 2023,
+    caption: "Base PVE de Outfreak Island — el refugio de los pioneros del 2023. Foto: Xemaxote.",
+  },
+  {
+    filename: "2023-07-09_bases_Xemaxote_03.png",
+    category: "bases",
+    year: 2023,
+    caption: "Distrito Zero — el barrio roleplay de Outfreak donde se cocinaba lore en cada esquina. Foto: Xemaxote.",
+  },
+  {
+    filename: "2023-07-09_bases_Xemaxote_04.png",
+    category: "bases",
+    year: 2023,
+    caption: "Otra esquina del Distrito Zero — Outfreak en su mejor momento. Foto: Xemaxote.",
+  },
+  {
+    filename: "2023-11-17_bases_Xemaxote_05.png",
+    category: "bases",
+    year: 2023,
+    caption: "Distrito Delta de Ponzoña — obra colectiva, captura de la era roleplay. Foto: Xemaxote.",
+  },
+  {
+    filename: "2025-06-14_bases_T-TON_Island_J_voc_02.png",
+    category: "bases",
+    year: 2025,
+    caption: "Una base de la era VERMIS — captura del propio J@voc. Junio 2025.",
+  },
+
+  // ────────────────────────────────────────────
+  // OJO TETÓN — del canal #fotografías (curadas por reacciones)
+  // ────────────────────────────────────────────
+  {
+    filename: "2024-05-17_fotos_𝕸𝖔𝖗𝖙𝖆𝖑𝕲𝖆𝖙𝖔_00.jpg",
+    category: "fotos",
+    year: 2024,
+    caption:
+      '"Se dice por ahí que en algún lugar de la isla espera a ser encontrada la familia de Lobo." — Mortal Gato.',
+  },
+  {
+    filename: "2024-03-14_fotos_Rincewind_01.png",
+    category: "fotos",
+    year: 2024,
+    caption: '"Las inauguraciones de los bares yo las recordaba de otra manera." — Rincewind.',
+  },
+  {
+    filename: "2024-03-17_fotos_Rincewind_02.png",
+    category: "fotos",
+    year: 2024,
+    caption:
+      '"Para cualquier plan siempre empezamos y terminamos en el bar — y eso que todavía no lo han inaugurado." — Rincewind.',
+  },
+  {
+    filename: "2024-03-09_fotos_Alex_Rosas_03.jpg",
+    category: "fotos",
+    year: 2024,
+    caption: '"Tres doritos después" — Alex Rosas. La frase que se convirtió en meme interno.',
+  },
+  {
+    filename: "2024-04-18_fotos_Sita1313_04.jpg",
+    category: "fotos",
+    year: 2024,
+    caption:
+      '"No sé por qué, pero a veces el destino hace cosas." — Sita1313. Una de esas casualidades inolvidables de la isla.',
+  },
+  {
+    filename: "2024-03-18_fotos_Rincewind_05.png",
+    category: "fotos",
+    year: 2024,
+    caption: "Un cumpleaños en la isla — captura de Rincewind. La comunidad celebrando incluso entre zombies.",
+  },
+  {
+    filename: "2025-02-10_fotos_T-TON_Island_J_voc_06.png",
+    category: "fotos",
+    year: 2025,
+    caption: "J@voc, en gratitud a la comunidad y al creador de SCUM. Febrero 2025.",
+  },
+  {
+    filename: "2024-03-14_fotos_Rincewind_07.png",
+    category: "fotos",
+    year: 2024,
+    caption: '"Los vecinos han secuestrado a Mudo y piden rescate. PIDEN RESCATE." — Rincewind. Lore en vivo.',
+  },
+  {
+    filename: "2025-01-09_fotos_Rincewind_08.png",
+    category: "fotos",
+    year: 2025,
+    caption: '"Esta señal debería estar por todo el mapa." — Rincewind. Pura ironía de superviviente.',
+  },
+  {
+    filename: "2024-04-10_fotos_Nikolai_09.png",
+    category: "fotos",
+    year: 2024,
+    caption: "Captura silenciosa pero potente — el ojo de un Tetón anónimo de los buenos años.",
+  },
+  {
+    filename: "2024-05-30_fotos_MrSamizilla_10.png",
+    category: "fotos",
+    year: 2024,
+    caption: '"A veces vender me hace perder dinero." — MrSamizilla, contando la verdad del comercio en la isla.',
+  },
+  {
+    filename: "2024-05-19_fotos_MrSamizilla_11.png",
+    category: "fotos",
+    year: 2024,
+    caption:
+      '"Pero qué calor — de buenas que el jefe me dejó media cerveza caliente en la basura." — MrSamizilla.',
+  },
+  {
+    filename: "2025-06-18_fotos_ByCarol_12.png",
+    category: "fotos",
+    year: 2025,
+    caption: '"Odio ir andando." — ByCarol. Cualquiera que caminó la isla sin auto entiende.',
+  },
+  {
+    filename: "2025-01-18_fotos_Tremix_13.jpg",
+    category: "fotos",
+    year: 2025,
+    caption:
+      '"Nuevo Centlo de Entletenimieto — pita de moto, boxeo, alo de la muete, tlagos, kalaoke." — Tremix (el Chino), en su mejor personaje.',
+  },
+  {
+    filename: "2025-01-10_fotos_𝕸𝖔𝖗𝖙𝖆𝖑𝕲𝖆𝖙𝖔_14.jpg",
+    category: "fotos",
+    year: 2025,
+    caption: "Mortal Gato — una postal de su ojo sobre la isla.",
+  },
+  {
+    filename: "2024-09-01_fotos_Nikolai_15.png",
+    category: "fotos",
+    year: 2024,
+    caption:
+      '"Estrenando el nuevo rol Bomb Defuser — para recoger mis extremidades si corto el cable incorrecto."',
+  },
+  {
+    filename: "2025-03-24_fotos_𝕸𝖔𝖗𝖙𝖆𝖑𝕲𝖆𝖙𝖔_16.webp",
+    category: "fotos",
+    year: 2025,
+    caption: "Ilustración de un Tetón por Mortal Gato — arte digital nacido de la comunidad.",
+  },
+  {
+    filename: "2025-03-13_fotos_𝕸𝖔𝖗𝖙𝖆𝖑𝕲𝖆𝖙𝖔_17.webp",
+    category: "fotos",
+    year: 2025,
+    caption: '"Lobo esperar nueva isla." — Mortal Gato. Esperando, siempre esperando.',
   },
 ];

@@ -87,6 +87,8 @@ export function Logros() {
             label="// PRINCIPIO"
             title="No pay to win — siempre"
             description="Mantuvimos el espíritu del EULA de SCUM desde antes de que existiera formalmente. Cuando se oficializó, seguimos con el mismo principio: jugar limpio, ganar por ganas y no por billetera."
+            href="https://store.steampowered.com/eula/513710_eula_0"
+            linkLabel="EULA Oficial de SCUM ↗"
           />
           <ExtraCard
             label="// CREATORS"

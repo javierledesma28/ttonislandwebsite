@@ -47,18 +47,21 @@ export function TEC1Drone() {
   });
 
   useEffect(() => {
-    // Only on fine pointer + after a delay to let boot sequence finish
     if (typeof window === "undefined") return;
+    // Don't show on touch devices (the cursor follow makes no sense)
     if (!window.matchMedia("(pointer: fine)").matches) return;
-    // Respect prefers-reduced-motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    // Check if user has dismissed it permanently
-    if (sessionStorage.getItem("tton-drone-dismissed") === "1") return;
 
     setEnabled(true);
-    const t1 = setTimeout(() => setStage("patrolling"), 4200); // after boot
-    const t2 = setTimeout(() => setStage("idle"), 9500);       // after patrol
+
+    // If user prefers reduced motion → skip patrol, go straight to idle
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setStage("idle");
+      return;
+    }
+
+    const t1 = setTimeout(() => setStage("patrolling"), 2500); // patrol earlier
+    const t2 = setTimeout(() => setStage("idle"), 7800);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
@@ -77,9 +80,7 @@ export function TEC1Drone() {
 
   const dismiss = () => {
     setStage("dismissed");
-    try {
-      sessionStorage.setItem("tton-drone-dismissed", "1");
-    } catch {}
+    // Sólo dismissal en memoria — al refrescar la página vuelve a aparecer
   };
 
   if (!enabled || stage === "hidden" || stage === "dismissed") return null;
