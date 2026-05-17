@@ -22,7 +22,7 @@ export function FloatingMessageButton() {
         transition={{ duration: 0.4, ease: "easeOut" }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.97 }}
-        className="hud-text fixed bottom-5 right-5 md:bottom-8 md:right-8 z-[70] inline-flex items-center gap-2 px-4 py-3 md:px-5 md:py-3.5 bg-tton-amber text-tton-black hover:bg-tton-rust hover:text-tton-bone border-2 border-tton-amber hover:border-tton-rust transition-colors shadow-[0_0_24px_rgba(255,176,0,0.35)]"
+        className="hud-text fixed bottom-5 left-5 md:bottom-8 md:left-8 z-[75] inline-flex items-center gap-2 px-4 py-3 md:px-5 md:py-3.5 bg-tton-amber text-tton-black hover:bg-tton-rust hover:text-tton-bone border-2 border-tton-amber hover:border-tton-rust transition-colors shadow-[0_0_24px_rgba(255,176,0,0.35)]"
         data-cursor-hover
         aria-label="Dejar un mensaje"
       >
