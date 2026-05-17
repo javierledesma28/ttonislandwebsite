@@ -5,6 +5,7 @@ import { Logros } from "@/components/Logros";
 import { OtrosJuegos } from "@/components/OtrosJuegos";
 import { Staff } from "@/components/Staff";
 import { Galeria } from "@/components/Galeria";
+import { Mensajes } from "@/components/Mensajes";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <OtrosJuegos />
       <Staff />
       <Galeria />
+      <Mensajes />
     </main>
   );
 }
