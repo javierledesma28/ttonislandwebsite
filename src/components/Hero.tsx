@@ -131,8 +131,8 @@ export function Hero() {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3"
         >
           <StatReadout label="UPTIME" value="4y 9m" hint="OPERACIÓN ACTIVA" />
-          <StatReadout label="GLOBAL RANK" value="#12" hint="RÉCORD MUNDIAL" />
-          <StatReadout label="HABLAHISPANA" value="#1 × 7 m" hint="CONSECUTIVOS" />
+          <StatReadout label="RANK GLOBAL" value="TOP 12" hint="RÉCORD MUNDIAL" />
+          <StatReadout label="HABLAHISPANA" value="7 MESES" hint="CONSECUTIVOS EN TOP 1" />
           <StatReadout label="MIEMBROS" value="1389" hint="PRISIONEROS REGISTRADOS" />
         </motion.div>
 
