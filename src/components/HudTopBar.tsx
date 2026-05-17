@@ -10,6 +10,7 @@ const SECTIONS = [
   { label: "03 / MÉTRICAS", href: "#logros" },
   { label: "04 / OTROS", href: "#otros-juegos" },
   { label: "05 / PERSONAL", href: "#staff" },
+  { label: "06 / ARCHIVO", href: "#galeria" },
 ];
 
 export function HudTopBar() {
