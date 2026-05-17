@@ -7,15 +7,15 @@ import { AmbientAudioToggle } from "./AmbientAudioToggle";
 import { useVideoModal } from "./VideoModal";
 
 const SECTIONS = [
-  { label: "01 / HISTORIA", href: "#historia" },
-  { label: "02 / ISLAS", href: "#islas" },
-  { label: "03 / METRICAS", href: "#logros" },
-  { label: "04 / OTROS", href: "#otros-juegos" },
-  { label: "05 / STAFF", href: "#staff" },
-  { label: "06 / PASARON", href: "#pasaron" },
-  { label: "07 / ARCHIVO", href: "#galeria" },
-  { label: "08 / MENSAJES", href: "#mensajes" },
-  { label: "09 / CARTA", href: "#carta" },
+  { label: "01 / HISTORIA", href: "/#historia" },
+  { label: "02 / ISLAS", href: "/#islas" },
+  { label: "03 / METRICAS", href: "/#logros" },
+  { label: "04 / OTROS", href: "/#otros-juegos" },
+  { label: "05 / STAFF", href: "/#staff" },
+  { label: "06 / PASARON", href: "/#pasaron" },
+  { label: "07 / ARCHIVO", href: "/#galeria" },
+  { label: "08 / MENSAJES", href: "/mensajes" },
+  { label: "09 / CARTA", href: "/carta" },
 ];
 
 export function HudTopBar() {
@@ -96,7 +96,7 @@ export function HudTopBar() {
       {/* Nav strip */}
       <nav className="flex items-center justify-between px-4 md:px-6 h-12 border-t border-tton-amber/15">
         <a
-          href="#inicio"
+          href="/"
           className="flex items-center gap-3 group"
           data-cursor-hover
         >
@@ -138,7 +138,7 @@ export function HudTopBar() {
             <span className="hidden sm:inline">LORE</span>
           </button>
           <a
-            href="#mensajes"
+            href="/mensajes"
             className="hud-text inline-flex items-center gap-1.5 px-3 py-1.5 border border-tton-amber text-tton-amber hover:bg-tton-amber hover:text-tton-black transition-colors"
             data-cursor-hover
           >

@@ -54,14 +54,14 @@ export async function Mensajes() {
               }}
               signOutAction={async () => {
                 "use server";
-                await signOut({ redirectTo: "/#mensajes" });
+                await signOut({ redirectTo: "/mensajes" });
               }}
             />
           ) : (
             <LoginPrompt
               signInAction={async () => {
                 "use server";
-                await signIn("discord", { redirectTo: "/#mensajes" });
+                await signIn("discord", { redirectTo: "/mensajes" });
               }}
             />
           )}
