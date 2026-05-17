@@ -73,7 +73,7 @@ export function OtrosJuegos() {
             <>
               NO SOLO SCUM
               <br />
-              NOS JUNTÓ.
+              NOS JUNTO.
             </>
           }
           intro={

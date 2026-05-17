@@ -76,19 +76,56 @@ export function Hero() {
           <span className="text-tton-bone/60">DATE: 16.05.2026</span>
         </motion.div>
 
-        {/* Mega Title */}
+        {/* Mega Title — heartbeat pulse on hover */}
         <motion.h1
           initial={{ opacity: 0, y: 30, filter: "blur(15px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
-          className="font-defused text-tton-bone leading-[0.85] tracking-tight uppercase"
+          whileHover="beat"
+          className="font-defused text-tton-bone leading-[0.85] tracking-tight uppercase inline-block origin-left cursor-default"
+          data-cursor-hover
+          variants={{
+            beat: {
+              scale: [1, 1.018, 1, 1.024, 1],
+              transition: {
+                duration: 1.4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                times: [0, 0.18, 0.36, 0.54, 1],
+              },
+            },
+          }}
         >
-          <span className="block text-7xl md:text-8xl lg:text-[10rem] glitch">
+          <motion.span
+            className="block text-7xl md:text-8xl lg:text-[10rem] glitch transition-[text-shadow] duration-500"
+            variants={{
+              beat: {
+                textShadow: [
+                  "0.05em 0 0 rgba(255,176,0,0.4), -0.025em -0.05em 0 rgba(217,119,6,0.35), 0.025em 0.05em 0 rgba(127,29,29,0.4)",
+                  "0.05em 0 0 rgba(255,176,0,0.55), -0.025em -0.05em 0 rgba(217,119,6,0.5), 0.025em 0.05em 0 rgba(127,29,29,0.55)",
+                  "0.05em 0 0 rgba(255,176,0,0.4), -0.025em -0.05em 0 rgba(217,119,6,0.35), 0.025em 0.05em 0 rgba(127,29,29,0.4)",
+                ],
+                transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+              },
+            }}
+          >
             T-TON
-          </span>
-          <span className="block text-7xl md:text-8xl lg:text-[10rem] text-tton-amber">
+          </motion.span>
+          <motion.span
+            className="block text-7xl md:text-8xl lg:text-[10rem] text-tton-amber transition-[filter] duration-500"
+            variants={{
+              beat: {
+                filter: [
+                  "drop-shadow(0 0 0px rgba(255,176,0,0))",
+                  "drop-shadow(0 0 18px rgba(255,176,0,0.45))",
+                  "drop-shadow(0 0 0px rgba(255,176,0,0))",
+                ],
+                transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+              },
+            }}
+          >
             ISLAND
-          </span>
+          </motion.span>
         </motion.h1>
 
         {/* Subtitle */}

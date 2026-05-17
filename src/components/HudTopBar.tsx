@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import { AmbientAudioToggle } from "./AmbientAudioToggle";
+import { useVideoModal } from "./VideoModal";
 
 const SECTIONS = [
   { label: "01 / HISTORIA", href: "#historia" },
   { label: "02 / ISLAS", href: "#islas" },
-  { label: "03 / MÉTRICAS", href: "#logros" },
+  { label: "03 / METRICAS", href: "#logros" },
   { label: "04 / OTROS", href: "#otros-juegos" },
   { label: "05 / PERSONAL", href: "#staff" },
   { label: "06 / ARCHIVO", href: "#galeria" },
@@ -16,6 +17,17 @@ const SECTIONS = [
 
 export function HudTopBar() {
   const [time, setTime] = useState("");
+  const { open } = useVideoModal();
+
+  const openLore = () =>
+    open({
+      youtubeId: "DvNgT3PrZSE",
+      title: "EL LORE DE SCUM",
+      caption:
+        "Audio movie del comic oficial de SCUM — narrado y voced por ItsLoafLord. La historia detrás del mundo donde vivimos cinco años.",
+      classification: "DECLASSIFIED",
+      fileLabel: "LORE-001 · SCUM COMIC · ARCHIVE",
+    });
 
   useEffect(() => {
     const update = () => {
@@ -99,14 +111,26 @@ export function HudTopBar() {
           ))}
         </div>
 
-        <a
-          href="#mensajes"
-          className="hud-text inline-flex items-center gap-1.5 px-3 py-1.5 border border-tton-amber text-tton-amber hover:bg-tton-amber hover:text-tton-black transition-colors"
-          data-cursor-hover
-        >
-          DEJAR MENSAJE
-          <ArrowUpRight className="h-3.5 w-3.5" />
-        </a>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={openLore}
+            className="hud-text inline-flex items-center gap-1.5 px-3 py-1.5 border border-tton-phosphor/60 text-tton-phosphor hover:bg-tton-phosphor hover:text-tton-black transition-colors"
+            data-cursor-hover
+          >
+            <BookOpen className="h-3.5 w-3.5" />
+            <span className="hidden sm:inline">LORE</span>
+          </button>
+          <a
+            href="#mensajes"
+            className="hud-text inline-flex items-center gap-1.5 px-3 py-1.5 border border-tton-amber text-tton-amber hover:bg-tton-amber hover:text-tton-black transition-colors"
+            data-cursor-hover
+          >
+            <span className="hidden sm:inline">DEJAR MENSAJE</span>
+            <span className="sm:hidden">MSG</span>
+            <ArrowUpRight className="h-3.5 w-3.5" />
+          </a>
+        </div>
       </nav>
     </header>
   );

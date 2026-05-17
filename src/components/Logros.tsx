@@ -47,7 +47,7 @@ export function Logros() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           fileNumber="003"
-          kicker="MÉTRICAS"
+          kicker="METRICAS"
           classification="DECLASSIFIED"
           title={
             <>

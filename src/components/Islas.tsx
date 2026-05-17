@@ -76,7 +76,7 @@ export function Islas() {
           classification="ARCHIVED"
           title={
             <>
-              SIETE CAPÍTULOS.
+              SIETE CAPITULOS
               <br />
               UNA HISTORIA.
             </>
