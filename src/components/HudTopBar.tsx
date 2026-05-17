@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { AmbientAudioToggle } from "./AmbientAudioToggle";
 
 const SECTIONS = [
   { label: "01 / HISTORIA", href: "#historia" },
@@ -50,14 +51,17 @@ export function HudTopBar() {
           <span className="text-tton-blood">TRANSMISSION TERMINATED</span>
         </div>
 
-        {/* Right — clock + member count */}
+        {/* Right — clock + member count + audio */}
         <div className="flex items-center gap-3 text-tton-bone/70">
-          <span className="hidden md:inline text-tton-phosphor">
+          <span className="hidden lg:inline text-tton-phosphor">
             <span className="online-dot inline-block mr-1.5 align-middle" />
             1389 PRISONERS
           </span>
-          <span className="hidden md:inline text-tton-amber/40">|</span>
-          <span className="tabular-nums text-tton-amber">{time || "00:00:00 UTC"}</span>
+          <span className="hidden lg:inline text-tton-amber/40">|</span>
+          <span className="tabular-nums text-tton-amber hidden sm:inline">
+            {time || "00:00:00 UTC"}
+          </span>
+          <AmbientAudioToggle />
         </div>
       </div>
 
