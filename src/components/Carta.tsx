@@ -200,11 +200,17 @@ export function Carta() {
 
           <Para>
             Y una mención que merece párrafo propio:{" "}
-            <strong className="text-tton-bone">Hernancho</strong>. Sin él el
-            server no se hubiera llamado así. Cada vez que alguien escribió
-            T-Ton, Tetón o Ttones, ahí estuvo su huella. Una deuda invisible
-            que hoy queda saldada con este reconocimiento. Gracias por el
-            nombre que terminó definiendo todo.
+            <strong className="text-tton-bone">Hernancho</strong>. Era
+            colega de equipo. Una vez, en plena defensa de un raid que
+            estábamos perdiendo de la manera más injusta del mundo, Hernan
+            arrancó con las puteadas — en el modo argentino más puro, ese
+            que solo entiende quien estuvo del otro lado de un raid injusto
+            a las cuatro de la mañana. Y de un insulto original y hermoso,{" "}
+            <em className="text-tton-amber not-italic">hermoso en serio</em>,
+            se me prendió la lamparita: ahí, en ese instante, nació en mi
+            cabeza el nombre del server que algún día iba a montar. Sin ese
+            raid, sin esa puteada, sin Hernan — TTON no se llamaría TTON.
+            Gracias, Hernancho, por la palabra que terminó definiendo todo.
           </Para>
 
           <Subheading>// EL HONOR DE SCUM EN ESPAÑOL</Subheading>
