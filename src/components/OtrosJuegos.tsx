@@ -52,7 +52,7 @@ const SERVERS: JuegoServer[] = [
       "Mapa Livonia con normativa estricta y lore propio",
       "Sistema de inscripción + evidencias",
       "Eventos de extracción y rescate",
-      "Canales de admin, staff y comunidad RP-friendly",
+      "Proyecto llevado adelante por Ballroghdemon — quien sostuvo el server durante toda su vida útil",
     ],
     accentColor: "from-blue-900/40 to-stone-950/0",
   },

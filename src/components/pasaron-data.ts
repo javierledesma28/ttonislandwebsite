@@ -242,5 +242,25 @@ export const AMIGOS: AmigoEntry[] = [
       "El server me regaló esta amistad y la guardo intacta. Aunque la isla cierre, lo que nació en TTON con vos no se cierra. Gracias, hermano.",
     inServer: false,
   },
+  {
+    id: "408551720986345472",
+    display: "Xemaxote",
+    username: "xemaxote",
+    avatarUrl: "https://cdn.discordapp.com/avatars/408551720986345472/e1a1bf255722cef2a75a98d86d9479e6.png?size=256",
+    highlight: "GRAN COMPAÑERO",
+    story:
+      "Mi compañero de esta gran aventura llamada SCUM. Caminamos juntos por las islas, los videos, los trailers, las decisiones difíciles. Más que un staff — un hermano que TTON me regaló. Gracias, Perro.",
+    inServer: true,
+  },
+  {
+    id: "462379444544339969",
+    display: "Tremix",
+    username: "tremix87",
+    avatarUrl: "https://cdn.discordapp.com/avatars/462379444544339969/81fb61f988bd48da134ce663a9238a97.png?size=256",
+    highlight: "APRECIO",
+    story:
+      "Si bien las diferencias nos distanciaron, es una persona que aprecio mucho y que aportó muchísimo a la comunidad. Lo que construyó dentro de TTON queda — y lo que vivimos también. Gracias, Tremix.",
+    inServer: false,
+  },
 ];
 
