@@ -12,8 +12,9 @@ RUN apk add --no-cache libc6-compat openssl
 COPY package.json package-lock.json ./
 COPY prisma ./prisma
 
-# Postinstall corre `prisma generate`; necesita schema.prisma + binaryTargets
-RUN npm ci
+# --ignore-scripts saltea el postinstall (prisma generate) que se corre
+# explícitamente en el builder stage, donde src/ ya existe.
+RUN npm ci --ignore-scripts
 
 # ─────────────────────────────────────────────
 # Stage 2: build the Next.js app
@@ -27,6 +28,9 @@ COPY . .
 # Variables públicas del cliente se inyectan en build-time
 ARG NEXT_PUBLIC_BASE_URL
 ENV NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL
+
+# Generar el Prisma client para Alpine (linux-musl) ANTES de buildear
+RUN npx prisma generate
 
 RUN npm run build
 
