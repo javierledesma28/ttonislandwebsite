@@ -310,8 +310,31 @@ export function Carta() {
           </Para>
 
           {/* Closing block */}
-          <div className="pt-8 border-t border-tton-amber/20">
-            <p className="font-defused text-tton-bone text-2xl md:text-3xl uppercase tracking-tight leading-tight">
+          <div className="relative pt-8 border-t border-tton-amber/20">
+            {/* Ghost backdrop — foto de J@voc difuminada, presencia espiritual */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -top-8 right-0 hidden md:block"
+              style={{
+                width: "320px",
+                height: "320px",
+                opacity: 0.08,
+                filter: "blur(2px) grayscale(0.4)",
+                maskImage:
+                  "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/brand/javoc-cheers.png"
+                alt=""
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            <p className="relative font-defused text-tton-bone text-2xl md:text-3xl uppercase tracking-tight leading-tight">
               Gracias.
               <br />
               Gracias por tanto tiempo.
@@ -320,13 +343,29 @@ export function Carta() {
               <br />
               que un dia se le ocurrio montar un server.
             </p>
-            <p className="mt-8 font-body text-tton-bone/80 text-base md:text-lg italic">
+            <p className="relative mt-8 font-body text-tton-bone/80 text-base md:text-lg italic">
               Hasta siempre, T-Tones. Hasta siempre, T-Tonas.
               <br />
               Con el corazón en la mano,
             </p>
-            <div className="mt-6 flex items-center gap-3">
-              <Heart className="h-5 w-5 text-tton-blood fill-current" />
+            <div className="relative mt-6 flex items-center gap-4">
+              {/* Avatar real circular — sello personal sutil */}
+              <div className="relative shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/brand/javoc-cheers.png"
+                  alt="J@voc brindando"
+                  className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover border-2 border-tton-amber/50"
+                  style={{
+                    boxShadow:
+                      "0 0 0 1px rgba(255,176,0,0.15), 0 0 24px rgba(255,176,0,0.12)",
+                  }}
+                />
+                <Heart
+                  className="absolute -bottom-1 -right-1 h-4 w-4 text-tton-blood fill-current bg-tton-black rounded-full p-0.5"
+                  aria-hidden="true"
+                />
+              </div>
               <div>
                 <p className="font-defused text-tton-amber text-2xl tracking-tight">
                   J@VOC
