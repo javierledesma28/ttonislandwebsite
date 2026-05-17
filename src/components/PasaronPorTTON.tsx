@@ -132,7 +132,7 @@ function AmigoCard({ a, index }: { a: AmigoEntry; index: number }) {
           className="rounded-full border-2 border-tton-rust/40 shrink-0"
         />
         <div className="min-w-0 flex-1">
-          <h4 className="font-defused text-tton-bone text-2xl leading-tight tracking-tight">
+          <h4 className="font-body text-tton-bone text-xl font-semibold leading-tight tracking-tight">
             {a.display}
           </h4>
           {a.username && a.username.toLowerCase() !== a.display.toLowerCase() && (
@@ -190,7 +190,7 @@ function PersonaCard({ p, index }: { p: PasaronEntry; index: number }) {
           loading="lazy"
         />
         <div className="min-w-0 flex-1">
-          <h3 className="font-defused text-tton-bone text-xl leading-tight tracking-tight truncate">
+          <h3 className="font-body text-tton-bone text-lg font-semibold leading-tight truncate tracking-tight">
             {p.display}
           </h3>
           {p.username && p.username.toLowerCase() !== p.display.toLowerCase() && (
