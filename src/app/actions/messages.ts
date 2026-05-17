@@ -64,10 +64,25 @@ export async function submitMessage(formData: FormData): Promise<SubmitMessageRe
       authorName: user.name || "Anónimo",
       authorAvatar: user.image,
       isHighlighted: user.isStaff,
+      isHidden: true, // moderation queue — admin debe aprobar antes de mostrar
     },
   });
 
+  // Fire-and-forget notification email (no bloquea la respuesta al usuario)
+  try {
+    const { notifyNewMessageForApproval } = await import("@/lib/email");
+    await notifyNewMessageForApproval({
+      messageId: created.id,
+      authorName: created.authorName,
+      content: created.content,
+      createdAt: created.createdAt,
+    });
+  } catch (err) {
+    console.error("[notifyNewMessage] failed:", err);
+  }
+
   revalidatePath("/");
+  revalidatePath("/mensajes");
   return { ok: true, messageId: created.id };
 }
 

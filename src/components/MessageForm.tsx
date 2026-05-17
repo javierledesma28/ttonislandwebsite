@@ -18,7 +18,10 @@ export function MessageForm() {
     startTransition(async () => {
       const res = await submitMessage(formData);
       if (res.ok) {
-        setFeedback({ ok: true, msg: "TRANSMISIÓN REGISTRADA." });
+        setFeedback({
+          ok: true,
+          msg: "TRANSMISIÓN REGISTRADA — PENDIENTE DE APROBACIÓN.",
+        });
         setContent("");
       } else {
         setFeedback({ ok: false, msg: res.error || "Error inesperado." });
