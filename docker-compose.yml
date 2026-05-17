@@ -1,0 +1,47 @@
+name: tton
+
+services:
+  app:
+    image: ttonisland:latest
+    container_name: tton-app
+    restart: unless-stopped
+    environment:
+      # DB — file persistente en el volume
+      DATABASE_URL: file:/app/data/tton.db
+      # NextAuth
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_URL: https://t-tonisland.com
+      AUTH_TRUST_HOST: "true"
+      AUTH_DISCORD_ID: ${AUTH_DISCORD_ID}
+      AUTH_DISCORD_SECRET: ${AUTH_DISCORD_SECRET}
+      # Microsoft Graph (email notifications)
+      GRAPH_TENANT_ID: ${GRAPH_TENANT_ID}
+      GRAPH_CLIENT_ID: ${GRAPH_CLIENT_ID}
+      GRAPH_CLIENT_SECRET: ${GRAPH_CLIENT_SECRET}
+      GRAPH_SENDER_EMAIL: ${GRAPH_SENDER_EMAIL}
+      # Base URL (server-side y client-side)
+      NEXT_PUBLIC_BASE_URL: https://t-tonisland.com
+    volumes:
+      - tton-data:/app/data
+    networks:
+      - tton-net
+    expose:
+      - "3000"
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: tton-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      - app
+    networks:
+      - tton-net
+
+networks:
+  tton-net:
+    driver: bridge
+
+volumes:
+  tton-data:
+    driver: local

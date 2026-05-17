@@ -1,14 +1,16 @@
 // T-TON Island — DB schema
 // Mensajes de comunidad + Auth.js (NextAuth v5)
-// Storage: MySQL (Hostinger shared hosting)
+// Storage: SQLite (file en Docker volume del VPS)
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../src/generated/prisma"
+  // native = Windows local dev. linux-musl-openssl-3.0.x = Alpine container (prod).
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -39,12 +41,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
+  refresh_token     String?
+  access_token      String?
   expires_at        Int?
   token_type        String?
   scope             String?
-  id_token          String? @db.Text
+  id_token          String?
   session_state     String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -75,7 +77,7 @@ model VerificationToken {
 model Message {
   id            String   @id @default(cuid())
   userId        String
-  content       String   @db.Text
+  content       String
   createdAt     DateTime @default(now())
   // Flags
   isHidden      Boolean  @default(false) // moderation
