@@ -14,6 +14,8 @@ const ROLE_COLOR: Record<string, string> = {
   STREAMER: "text-purple-300 border-purple-300/50",
   SPONSOR: "text-yellow-300 border-yellow-300/50",
   DONADOR: "text-yellow-300 border-yellow-300/50",
+  TÉCNICO: "text-cyan-300 border-cyan-300/50",
+  STAFF: "text-tton-phosphor border-tton-phosphor/60",
 };
 
 export function PasaronPorTTON() {
