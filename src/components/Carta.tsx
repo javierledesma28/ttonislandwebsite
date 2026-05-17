@@ -116,13 +116,16 @@ export function Carta() {
           <Subheading>// LAS ISLAS</Subheading>
 
           <Para>
-            Outfreak, Warfare, Esperanza, Ponzoña, Banana, Brava, y
-            finalmente VERMIS — siete ediciones que la comunidad bautizó como
-            islas. Cada una con su sabor, su gente, su locura, sus cicatrices.
-            Banana fue la que nos hizo familia. VERMIS fue donde quisimos
-            llevar todo más lejos. Las dejo en orden no porque sea historia
-            cerrada, sino porque cada nombre devuelve un recuerdo distinto al
-            que estuvo.
+            En los primeros años también tuvimos ediciones, aunque sin
+            nombre propio — cada wipe que anunciaba SCUM era prácticamente
+            una edición nueva para nosotros, pero no las formalizamos como
+            tales. Después empezamos a darles identidad: Outfreak, Warfare,
+            Esperanza, Ponzoña, Banana, Brava, y finalmente VERMIS — siete
+            ediciones que la comunidad bautizó como islas. Cada una con su
+            sabor, su gente, su locura, sus cicatrices. Banana fue la que
+            nos hizo familia. VERMIS fue donde quisimos llevar todo más
+            lejos. Las dejo en orden no porque sea historia cerrada, sino
+            porque cada nombre devuelve un recuerdo distinto al que estuvo.
           </Para>
 
           <Subheading>// LO QUE LOGRAMOS — SIN MARKETING</Subheading>
@@ -171,8 +174,8 @@ export function Carta() {
             Esto no lo cierro solo. Lo firmo en nombre del equipo que se
             bancó este último tramo:{" "}
             <strong className="text-tton-bone">Perro Karateka (Xemaxote)</strong>,
-            la cámara y el alma audiovisual de TTON, y cerebro detrás de
-            varias de las últimas ediciones.{" "}
+            cerebro creativo detrás de varias de las últimas ediciones —
+            y además, la cámara y el alma audiovisual de TTON.{" "}
             <strong className="text-tton-bone">Tavo Montenegro (Tavito)</strong>,
             la cabeza fría — y sí, el Sr. Banhour también era él, ese
             personaje legendario.{" "}
