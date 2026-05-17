@@ -42,20 +42,20 @@ export function Hero() {
         }}
       />
 
-      {/* Logo watermark animado — sutil, detrás del contenido */}
+      {/* Logo watermark animado — alineado horizontalmente con el título */}
       <motion.div
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 0.12, scale: 1 }}
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: 0.18, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut", delay: 0.6 }}
-        className="absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 z-0 pointer-events-none"
+        className="absolute right-4 md:right-10 lg:right-16 top-24 md:top-32 lg:top-36 z-0 pointer-events-none"
       >
         <Image
           src="/brand/tton-logo-animated.gif"
           alt=""
-          width={600}
-          height={600}
+          width={500}
+          height={500}
           unoptimized
-          className="w-[300px] h-[300px] md:w-[460px] md:h-[460px] lg:w-[620px] lg:h-[620px] object-contain"
+          className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[420px] lg:h-[420px] object-contain"
           priority
         />
       </motion.div>
@@ -86,9 +86,9 @@ export function Hero() {
           data-cursor-hover
           variants={{
             beat: {
-              scale: [1, 1.018, 1, 1.024, 1],
+              scale: [1, 1.005, 1, 1.008, 1],
               transition: {
-                duration: 1.4,
+                duration: 1.8,
                 repeat: Infinity,
                 ease: "easeInOut",
                 times: [0, 0.18, 0.36, 0.54, 1],
@@ -97,30 +97,20 @@ export function Hero() {
           }}
         >
           <motion.span
-            className="block text-7xl md:text-8xl lg:text-[10rem] glitch transition-[text-shadow] duration-500"
-            variants={{
-              beat: {
-                textShadow: [
-                  "0.05em 0 0 rgba(255,176,0,0.4), -0.025em -0.05em 0 rgba(217,119,6,0.35), 0.025em 0.05em 0 rgba(127,29,29,0.4)",
-                  "0.05em 0 0 rgba(255,176,0,0.55), -0.025em -0.05em 0 rgba(217,119,6,0.5), 0.025em 0.05em 0 rgba(127,29,29,0.55)",
-                  "0.05em 0 0 rgba(255,176,0,0.4), -0.025em -0.05em 0 rgba(217,119,6,0.35), 0.025em 0.05em 0 rgba(127,29,29,0.4)",
-                ],
-                transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
-              },
-            }}
+            className="block text-7xl md:text-8xl lg:text-[10rem] glitch"
           >
             T-TON
           </motion.span>
           <motion.span
-            className="block text-7xl md:text-8xl lg:text-[10rem] text-tton-amber transition-[filter] duration-500"
+            className="block text-7xl md:text-8xl lg:text-[10rem] text-tton-amber"
             variants={{
               beat: {
                 filter: [
                   "drop-shadow(0 0 0px rgba(255,176,0,0))",
-                  "drop-shadow(0 0 18px rgba(255,176,0,0.45))",
+                  "drop-shadow(0 0 8px rgba(255,176,0,0.2))",
                   "drop-shadow(0 0 0px rgba(255,176,0,0))",
                 ],
-                transition: { duration: 1.4, repeat: Infinity, ease: "easeInOut" },
+                transition: { duration: 1.8, repeat: Infinity, ease: "easeInOut" },
               },
             }}
           >
