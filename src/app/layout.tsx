@@ -7,6 +7,7 @@ import { BootSequence } from "@/components/BootSequence";
 import { CustomCursor } from "@/components/CustomCursor";
 import { HudTopBar } from "@/components/HudTopBar";
 import { VideoModalProvider } from "@/components/VideoModal";
+import { TEC1Drone } from "@/components/TEC1Drone";
 
 const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
@@ -68,6 +69,7 @@ export default function RootLayout({
         <VideoModalProvider>
           <HudTopBar />
           <SmoothScroll>{children}</SmoothScroll>
+          <TEC1Drone />
         </VideoModalProvider>
       </body>
     </html>
