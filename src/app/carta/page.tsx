@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Carta } from "@/components/Carta";
 
 export const metadata = {
@@ -9,7 +10,9 @@ export const metadata = {
 export default function CartaPage() {
   return (
     <main className="bg-tton-black text-tton-bone min-h-screen pt-24">
-      <Carta />
+      <Suspense fallback={null}>
+        <Carta />
+      </Suspense>
     </main>
   );
 }
