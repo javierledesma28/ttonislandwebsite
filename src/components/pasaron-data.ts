@@ -158,9 +158,9 @@ export const PASARON: PasaronEntry[] = [
     display: "ha_k_er",
     username: "ha_k_er",
     avatarUrl: "https://cdn.discordapp.com/avatars/687953247469699083/7a66b69800c43593bce6d71d3de20279.png?size=256",
-    role: "TÉCNICO",
+    role: "PERSONAJE",
     era: "Jul 2022",
-    story: "Conocido en la comunidad simplemente como 'el hacker' — aportó conocimiento técnico al server en momentos clave. Una de esas presencias que sostenían lo invisible.",
+    story: "Una figura dentro del juego — 'el hacker' era su personaje de roleplay, de los que ganaron un lugar en el folklore de la isla. Presencia constante en el lado narrativo del server.",
     inServer: true,
   },
   {
