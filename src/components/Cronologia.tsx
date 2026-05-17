@@ -25,6 +25,12 @@ const HITOS: Hito[] = [
     tipo: "prestigio",
   },
   {
+    fecha: "18 Mar 2022",
+    titulo: "Gato Samuray entra a la administración",
+    detalle: "Uno de los pilares de los inicios se suma como Admin para acompañar y ayudar a crecer la comunidad. Mod durante mucho tiempo, gran amigo personal del owner — TTON le dejó una amistad que vale más que cualquier rol.",
+    tipo: "staff",
+  },
+  {
     fecha: "Mar 2022",
     titulo: "Llega el server EUROPA",
     detalle: "Abrimos [EUROPA] SCUM T-TON ESP HISPANO PVE/PVP — pasamos a tener servidores en dos continentes. La comunidad empezaba a no caber en uno solo.",

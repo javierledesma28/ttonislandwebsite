@@ -54,7 +54,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     filename: "2021-09-08_selfie-epica.png",
     category: "comunidad",
     year: 2021,
-    caption: "Selfie épica del comienzo (sept 2021)",
+    caption: "Así luce J@voc — selfie épica del owner, septiembre de 2021",
   },
   {
     filename: "2021-09-10_tton-scum-banner.jpg",
