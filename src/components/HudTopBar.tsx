@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const SECTIONS = [
   { label: "01 / HISTORIA", href: "#historia" },
-  { label: "02 / LOCALES", href: "#islas" },
+  { label: "02 / ISLAS", href: "#islas" },
   { label: "03 / MÉTRICAS", href: "#logros" },
   { label: "04 / OTROS", href: "#otros-juegos" },
   { label: "05 / PERSONAL", href: "#staff" },

@@ -145,7 +145,7 @@ export function Hero() {
         >
           <div className="caution-stripe h-2 mb-4" />
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 font-terminal text-xs uppercase tracking-[0.2em] text-tton-bone/60">
-            <span className="text-tton-amber">// LOCALES REGISTRADOS</span>
+            <span className="text-tton-amber">// ISLAS REGISTRADAS</span>
             {["OUTFREAK", "WARFARE", "ESPERANZA", "PONZOÑA", "BANANA", "BRAVA", "VERMIS"].map((isla) => (
               <span key={isla} className="text-tton-bone hover:text-tton-amber transition-colors">
                 {isla}

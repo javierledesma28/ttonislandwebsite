@@ -72,7 +72,7 @@ export function Islas() {
       <div className="max-w-6xl mx-auto">
         <SectionHeader
           fileNumber="002"
-          kicker="LOCALES"
+          kicker="ISLAS"
           classification="ARCHIVED"
           title={
             <>
@@ -83,7 +83,12 @@ export function Islas() {
           }
           intro={
             <>
-              Cada isla tuvo su sabor, su gente, su locura, sus cicatrices.
+              SCUM se juega en una isla — vos sos el prisionero. Nosotros,
+              al construir distintas <strong className="text-tton-amber font-semibold">ediciones</strong> y
+              <strong className="text-tton-amber font-semibold"> experiencias</strong> sobre ese mundo, dejamos
+              que la comunidad las bautizara con su propio nombre:{" "}
+              <em className="text-tton-bone">isla Outfreak, isla Banana, isla Ponzoña…</em>{" "}
+              Cada una tuvo su sabor, su gente, su locura, sus cicatrices.
               Algunas duraron meses, otras un año. Todas dejaron marca.
             </>
           }
