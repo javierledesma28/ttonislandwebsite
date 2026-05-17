@@ -103,6 +103,12 @@ const HITOS: Hito[] = [
     tipo: "expansion",
   },
   {
+    fecha: "Dic 2023",
+    titulo: "Una donación que cambió todo",
+    detalle: "En un momento clave del proyecto, alguien — que pidió no ser nombrado — donó 2.000 dólares para que el server siguiera adelante. Sin ese gesto, varias de las cosas que terminamos construyendo no hubieran sido posibles. Gracias, donde sea que estés.",
+    tipo: "prestigio",
+  },
+  {
     fecha: "Feb 2024",
     titulo: "Era Isla Banana en pleno auge",
     detalle: "Encuesta a la comunidad por los dos meses de Banana. Cientos de reacciones. La isla que nos dio identidad estaba en su mejor momento.",
