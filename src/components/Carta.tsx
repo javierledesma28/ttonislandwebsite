@@ -314,11 +314,11 @@ export function Carta() {
             <p className="font-defused text-tton-bone text-2xl md:text-3xl uppercase tracking-tight leading-tight">
               Gracias.
               <br />
-              Gracias por tantos años.
+              Gracias por tanto tiempo.
               <br />
               Gracias por confiar en este loco
               <br />
-              que un día se le ocurrió montar un server.
+              que un dia se le ocurrio montar un server.
             </p>
             <p className="mt-8 font-body text-tton-bone/80 text-base md:text-lg italic">
               Hasta siempre, T-Tones. Hasta siempre, T-Tonas.
