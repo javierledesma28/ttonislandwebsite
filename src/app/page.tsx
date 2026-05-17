@@ -6,6 +6,7 @@ import { OtrosJuegos } from "@/components/OtrosJuegos";
 import { Staff } from "@/components/Staff";
 import { Galeria } from "@/components/Galeria";
 import { Mensajes } from "@/components/Mensajes";
+import { PasaronPorTTON } from "@/components/PasaronPorTTON";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Logros />
       <OtrosJuegos />
       <Staff />
+      <PasaronPorTTON />
       <Galeria />
       <Mensajes />
     </main>

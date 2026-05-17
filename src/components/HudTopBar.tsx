@@ -12,8 +12,9 @@ const SECTIONS = [
   { label: "03 / METRICAS", href: "#logros" },
   { label: "04 / OTROS", href: "#otros-juegos" },
   { label: "05 / STAFF", href: "#staff" },
-  { label: "06 / ARCHIVO", href: "#galeria" },
-  { label: "07 / MENSAJES", href: "#mensajes" },
+  { label: "06 / PASARON", href: "#pasaron" },
+  { label: "07 / ARCHIVO", href: "#galeria" },
+  { label: "08 / MENSAJES", href: "#mensajes" },
 ];
 
 export function HudTopBar() {
