@@ -37,6 +37,12 @@ const HITOS: Hito[] = [
     tipo: "expansion",
   },
   {
+    fecha: "Abr-May 2022",
+    titulo: "La gran expansión: 5 servers + La Academia",
+    detalle: "En menos de dos meses sumamos servidores hasta tener cinco en simultáneo: el LATAM original, el [AMERICA] ARG-MEX, una réplica europea, un server de DAYZ, otro de Roleplay chill, y el más distintivo — La Academia (3 mayo) — dedicado a enseñar los primeros pasos en SCUM a recién llegados. Todo apoyado en una alianza temporal con Alkons2 que aceleró el crecimiento pero no perduró. Sumamos staff, sponsors, e implementamos un bot interno para métricas. TTON dejaba de ser una isla para volverse una saga.",
+    tipo: "expansion",
+  },
+  {
     fecha: "14 Jun 2022",
     titulo: "Fusión LATAM + EUROPA",
     detalle: "Lanzamos [T-TON ISLAND] PVP - EVENTOS - HARD - PACK - ADMINS ON (LATAM/ESP). Una sola isla para todos los hispanohablantes del mundo.",
@@ -57,7 +63,7 @@ const HITOS: Hito[] = [
   {
     fecha: "Sep 2022",
     titulo: "Empieza el primer sitio web TTON",
-    detalle: "J@voc anuncia que está construyendo el sitio web de la comunidad. La identidad de TTON empezaba a tomar forma fuera del Discord.",
+    detalle: "J@voc anuncia que está construyendo el sitio web de la comunidad — con la ayuda invaluable de Leti, que colaboró codo a codo en la creación. La identidad de TTON empezaba a tomar forma fuera del Discord.",
     tipo: "comunidad",
   },
   {
@@ -115,9 +121,9 @@ const HITOS: Hito[] = [
     tipo: "staff",
   },
   {
-    fecha: "Oct 2024",
-    titulo: "Visita muy especial",
-    detalle: "Un día especial para SCUM y para la comunidad. Tuvimos un saludo desde adentro de SCUM que nos llenó de orgullo.",
+    fecha: "7 Oct 2024",
+    titulo: "Danny Trejo saluda a la comunidad",
+    detalle: "Un día especial. Recibimos un saludo personalizado de Danny Trejo — sí, el actor icónico que tiene su propio personaje DLC en SCUM. Para una comunidad de fans del juego, no hay validación más alta que esa. Quedó como uno de los hitos más recordados del año.",
     tipo: "prestigio",
   },
   {
