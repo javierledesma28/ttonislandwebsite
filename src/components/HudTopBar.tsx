@@ -68,7 +68,7 @@ export function HudTopBar() {
           <span className="text-tton-blood font-bold">REC</span>
           <span className="hidden sm:inline text-tton-amber/60">|</span>
           <span className="hidden sm:inline text-tton-bone/80">
-            TTON SURVEILLANCE TERMINAL
+            TTON SURVIVOR TERMINAL
           </span>
         </div>
 
