@@ -41,14 +41,31 @@ export function PasaronPorTTON() {
           intro={
             <>
               Sin esta gente, TTON no hubiera sido TTON. Admins, mods,
-              sponsors, instructores, streamers — algunos siguen, otros se
-              fueron, pero todos dejaron marca en estos cinco años. Una
-              memoria justa para honrar a quien aportó.
+              sponsors, instructores — algunos siguen, otros se fueron, pero
+              todos dejaron marca en estos cinco años. Una memoria justa para
+              honrar a quien aportó.
             </>
           }
         />
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Disclaimer — perdón si se me olvida alguien */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="mb-10 max-w-3xl flex items-start gap-3 px-4 py-3 border border-tton-amber/25 bg-tton-amber/[0.03]"
+        >
+          <span className="hud-text text-tton-amber/80 shrink-0 mt-0.5">// NOTA</span>
+          <p className="text-sm text-tton-bone/75 font-body font-light italic leading-relaxed">
+            Si me olvido de alguien, perdón de antemano — han sido muchos años
+            y muchísimas historias. La memoria humana es la que es y este
+            archivo se arma con la que tengo. Cualquier ausencia es por
+            distracción, nunca por desinterés.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {PASARON.map((p, i) => (
             <PersonaCard key={p.id} p={p} index={i} />
           ))}
