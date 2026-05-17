@@ -262,5 +262,15 @@ export const AMIGOS: AmigoEntry[] = [
       "Si bien las diferencias nos distanciaron, es una persona que aprecio mucho y que aportó muchísimo a la comunidad. Lo que construyó dentro de TTON queda — y lo que vivimos también. Gracias, Tremix.",
     inServer: false,
   },
+  {
+    id: "764444573279059989",
+    display: "♥️ ByCarol ♥️",
+    username: "bycarol",
+    avatarUrl: "https://cdn.discordapp.com/avatars/764444573279059989/63674af323715c2d61f0ae08d220f1f1.png?size=256",
+    highlight: "DESDE LOS INICIOS",
+    story:
+      "Una de las personas que más jugó en TTON desde los primerísimos días. Constancia, presencia, y una conexión real con la comunidad que se sostuvo durante todos estos años. Carol es parte del ADN del server. Gracias por estar siempre.",
+    inServer: true,
+  },
 ];
 
