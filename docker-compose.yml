@@ -8,7 +8,15 @@ services:
     image: ttonisland:latest
     container_name: tton-app
     restart: unless-stopped
+    # Resource caps — evitar OOM del host por leak o spike.
+    # 75MB es el baseline observado; 512M deja ~7x headroom.
+    mem_limit: 512m
+    mem_reservation: 128m
+    cpus: 1.0
     environment:
+      # Limit V8 heap a 384MB → JS muere con error visible antes que
+      # el container OOM-kill silencioso. 128MB de slack para no-heap.
+      NODE_OPTIONS: --max-old-space-size=384
       # DB — file persistente en el volume
       DATABASE_URL: file:/app/data/tton.db
       # NextAuth
