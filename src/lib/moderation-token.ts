@@ -65,9 +65,12 @@ export function verifyModerationToken(
 }
 
 export function getBaseUrl(): string {
-  // Producción: usa NEXT_PUBLIC_BASE_URL
-  // Dev: localhost:3000
+  // AUTH_URL primero porque NO lleva prefijo NEXT_PUBLIC_ y se lee en
+  // RUNTIME. Next.js inlinea NEXT_PUBLIC_* al build time, así que si la
+  // imagen se construyó sin esa env seteada queda hardcoded a localhost
+  // (que fue el bug que pegó los mails apuntando a localhost en prod).
   return (
+    process.env.AUTH_URL ||
     process.env.NEXT_PUBLIC_BASE_URL ||
     process.env.NEXTAUTH_URL ||
     "http://localhost:3000"

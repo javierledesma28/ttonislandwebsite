@@ -5,6 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # Next.js inlinea NEXT_PUBLIC_* al build time. Si esto no se pasa
+        # en build, el fallback "http://localhost:3000" queda hardcoded
+        # en el bundle del server (links de mail rompen en prod).
+        NEXT_PUBLIC_BASE_URL: https://t-tonisland.com
     image: ttonisland:latest
     container_name: tton-app
     restart: unless-stopped
@@ -43,6 +48,10 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: tton-tunnel
     restart: unless-stopped
+    # Cloudflared idle ~29MB; 96MB deja 3x headroom y evita que un leak
+    # en cloudflared tumbe el host.
+    mem_limit: 96m
+    cpus: 0.5
     command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TUNNEL_TOKEN}
     depends_on:
       - app
