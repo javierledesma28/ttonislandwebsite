@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Instrument_Serif, Barlow, JetBrains_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -73,6 +74,13 @@ export default function RootLayout({
           <FloatingMessageButton />
           <TEC1Drone />
         </VideoModalProvider>
+        {/* Cloudflare Web Analytics — beacon privacy-friendly, sin cookies */}
+        <Script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token":"e84f99dc952b46ecaae080a50595a2f5"}'
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
