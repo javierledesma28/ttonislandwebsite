@@ -19,6 +19,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     Discord({
       clientId: process.env.AUTH_DISCORD_ID!,
       clientSecret: process.env.AUTH_DISCORD_SECRET!,
+      // Discord devuelve `iss=https://discord.com` en el callback (RFC 9207).
+      // Sin este valor, Auth.js asume "https://authjs.dev" y oauth4webapi rechaza
+      // la respuesta con "unexpected iss (issuer) response parameter value".
+      issuer: "https://discord.com",
       // identify scope is default; explicit for clarity
       authorization: { params: { scope: "identify" } },
       profile(profile) {
